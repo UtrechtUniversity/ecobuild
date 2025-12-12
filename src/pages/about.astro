@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE } from '../config';
+---
+
+<Layout title="About">
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-4xl font-bold mb-6">About {SITE.labName}</h1>
+    
+    <div class="prose prose-lg max-w-none mb-12">
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Our Mission</h2>
+      <p>
+        {SITE.labName} is dedicated to advancing research in sustainable building design and technology. 
+        We leverage data-driven approaches and innovative methodologies to create solutions that benefit 
+        both the environment and society.
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Who We Are</h2>
+      <p>
+        Our team consists of passionate researchers, engineers, and students working across multiple 
+        disciplines. We collaborate with leading institutions and industry partners to translate cutting-edge 
+        research into practical applications.
+      </p>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Research Focus</h2>
+      <p>
+        We focus on several key research areas:
+      </p>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Sustainable Building Design:</strong> Developing eco-friendly construction methodologies and materials.</li>
+        <li><strong>Energy Efficiency:</strong> Creating solutions to minimize energy consumption in buildings.</li>
+        <li><strong>Smart Technologies:</strong> Integrating IoT and AI for intelligent building management.</li>
+        <li><strong>Environmental Impact:</strong> Assessing and reducing the carbon footprint of construction projects.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Our Values</h2>
+      <ul class="list-disc list-inside space-y-2">
+        <li><strong>Innovation:</strong> We push boundaries and explore new frontiers in sustainable technology.</li>
+        <li><strong>Collaboration:</strong> We work with partners worldwide to amplify our impact.</li>
+        <li><strong>Transparency:</strong> We share our findings openly and contribute to the scientific community.</li>
+        <li><strong>Sustainability:</strong> Environmental responsibility guides all our decisions.</li>
+      </ul>
+
+      <h2 class="text-2xl font-semibold mt-8 mb-4">Get In Touch</h2>
+      <p>
+        Interested in learning more about our work or potential collaborations? 
+        <a href="/contact" class="text-blue-600 hover:underline">Contact us</a> to get in touch with our team.
+      </p>
+    </div>
+  </section>
+</Layout>

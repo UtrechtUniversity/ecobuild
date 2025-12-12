@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { ArrowRight } from 'lucide-react';
+
+const researchAreas = (await getCollection('research')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Layout title="Research">
+  <div class="max-w-7xl mx-auto px-4 py-12 sm:py-20">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n-key="nav.research">Research Areas</h1>
+      <p class="text-lg text-gray-600" data-i18n-key="research.subtitle">
+        Our lab explores the frontiers of artificial intelligence, with a focus on computer vision and machine learning.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {researchAreas.map(area => (
+        <div class="group relative bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300">
+          {area.data.cover && (
+            <div class="h-48 overflow-hidden bg-gray-100">
+              <img 
+                src={area.data.cover.src} 
+                alt={area.data.title} 
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          )}
+          
+          <div class="p-6">
+            <h2 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+              {area.data.title}
+            </h2>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+              {area.data.description}
+            </p>
+            <a 
+              href={`/research/${area.id.replace(/\.[^/.]+$/, "")}`} 
+              class="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700"
+            >
+              <span data-i18n-key="research.learnMore">Learn more</span> <ArrowRight className="ml-1 w-4 h-4" />
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    {researchAreas.length === 0 && (
+      <div class="text-center py-20">
+        <p class="text-gray-500" data-i18n-key="research.noAreas">No research areas defined. Add markdown files to src/content/research/</p>
+      </div>
+    )}
+  </div>
+</Layout>

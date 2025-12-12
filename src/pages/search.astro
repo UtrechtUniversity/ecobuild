@@ -1,0 +1,190 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+export const prerender = true;
+
+import fs from 'fs/promises';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const rawEntries: any[] = [];
+
+async function walkDir(dirPath: string) {
+  let dirents;
+  try {
+    dirents = await fs.readdir(dirPath, { withFileTypes: true });
+  } catch (e) {
+    console.error('Failed to read directory', dirPath, e);
+    return;
+  }
+
+  for (const dirent of dirents) {
+    const childPath = path.join(dirPath, dirent.name);
+    if (dirent.isDirectory()) {
+      await walkDir(childPath);
+    } else if (dirent.isFile() && /\.mdx?$/.test(dirent.name)) {
+      try {
+        const raw = await fs.readFile(childPath, 'utf-8');
+        const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        const fm = fmMatch ? fmMatch[1] : '';
+        const getField = (name: string) => {
+          const re = new RegExp(name + ":\\s*(?:'([^']*)'|\"([^\"]*)\"|([^\\n]+))");
+          const m = fm.match(re);
+          if (!m) return '';
+          return (m[1] || m[2] || m[3] || '').trim();
+        };
+        const title = getField('title') || getField('name') || '';
+        const bio = getField('bio') || '';
+        const description = getField('description') || '';
+        const name = getField('name') || '';
+        const role = getField('role') || '';
+        const authors = getField('authors') || '';
+        const body = raw.replace(/^---[\s\S]*?---\r?\n?/, '').replace(/\r?\n/g, ' ');
+        const idx = childPath.indexOf(path.join('src', 'content'));
+        const rel = idx !== -1 ? childPath.slice(idx + path.join('src', 'content').length) : '/' + dirent.name;
+        const url = rel.replace(/\\/g, '/').replace(/\.mdx?$/, '');
+        rawEntries.push({ title, bio, description, name, role, authors, content: body, url });
+      } catch (e) {
+        console.error('Failed to read file', childPath, e);
+      }
+    }
+  }
+}
+
+const contentRoot = fileURLToPath(new URL('../content/', import.meta.url));
+await walkDir(contentRoot);
+
+const SEARCH_INDEX = rawEntries;
+
+try {
+  await fs.writeFile(new URL('../../public/search-index.json', import.meta.url), JSON.stringify(SEARCH_INDEX), 'utf-8');
+} catch (e) {
+  console.error('Failed to write public/search-index.json', e);
+}
+---
+
+<Layout title="Search">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 min-h-[60vh]">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-4" data-i18n-key="nav.search">Search</h1>
+      <p class="text-gray-600" data-i18n-key="search.subtitle">Search through our publications, news, and team members.</p>
+    </div>
+    
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <div class="w-full">
+        <label for="search-input" class="sr-only">Search</label>
+        <div class="relative">
+          <input id="search-input" type="search" placeholder="Search the EcoBuild website..." class="w-full border border-gray-200 rounded-md py-3 px-4 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+        </div>
+        
+        <div id="search-results" class="mt-4 grid gap-4"></div>
+        <div id="search-empty" class="mt-4 text-gray-500 hidden">No results.</div>
+
+        <script is:inline define:vars={{ SEARCH_INDEX }}>
+          window.__SEARCH_INDEX = SEARCH_INDEX;
+        </script>
+
+        <script is:inline>
+          (function(){
+            let INDEX = window.__SEARCH_INDEX || [];
+            const tryLoadRemote = async () => {
+              try {
+                const res = await fetch('/search-index.json');
+                if (res.ok) {
+                  INDEX = await res.json();
+                }
+              } catch (e) {
+                console.error('Failed to fetch /search-index.json', e);
+              }
+            };
+            if(!INDEX || INDEX.length === 0) tryLoadRemote();
+            
+            const input = document.getElementById('search-input');
+            const resultsEl = document.getElementById('search-results');
+            const emptyEl = document.getElementById('search-empty');
+
+            function normalize(s){ return (s||'').toLowerCase(); }
+            function truncate(s, n){ return s.length > n ? s.slice(0,n).trim() + '…' : s; }
+            function highlight(text, q){ if(!q) return text; try{ const esc = q.replace(/[\\/\\^$*+?.()|[\]{}]/g,'\\\$&'); return text.replace(new RegExp(esc,'ig'), m => '<mark class="bg-yellow-100">'+m+'</mark>'); }catch(e){return text;} }
+
+            function render(results, q){
+              resultsEl.innerHTML = '';
+              if(!results || results.length === 0){ emptyEl.classList.remove('hidden'); return; }
+              emptyEl.classList.add('hidden');
+              results.forEach(r => {
+                const a = document.createElement('a');
+                a.href = r.url;
+                a.className = 'block p-4 border border-gray-100 rounded-md hover:shadow-sm';
+                const displayName = r.name || r.title || '';
+                const title = highlight(escapeHtml(displayName), q);
+                const snippet = highlight(escapeHtml(truncate(r.content || r.bio || '', 240)), q);
+                a.innerHTML = '<h3 class="font-semibold text-gray-900">' + title + '</h3>' +
+                              '<p class="text-sm text-gray-600 mt-1">' + snippet + '</p>';
+                resultsEl.appendChild(a);
+              });
+            }
+
+            function escapeHtml(str){ return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+            function search(q){
+              q = normalize(q);
+              if(!q){ resultsEl.innerHTML = ''; emptyEl.classList.add('hidden'); return; }
+              const out = INDEX.filter(item => {
+                return (normalize(item.title || '').indexOf(q) !== -1) ||
+                       (normalize(item.bio || '').indexOf(q) !== -1) ||
+                       (normalize(item.description || '').indexOf(q) !== -1) ||
+                       (normalize(item.name || '').indexOf(q) !== -1) ||
+                       (normalize(item.role || '').indexOf(q) !== -1) ||
+                       (normalize(item.authors || '').indexOf(q) !== -1) ||
+                       (normalize(item.content || '').indexOf(q) !== -1);
+              }).slice(0, 50);
+              render(out, q);
+            }
+
+            let timer = null;
+            if(input){
+              input.addEventListener('input', function(e){
+                const q = e.target.value || '';
+                clearTimeout(timer);
+                timer = setTimeout(() => search(q), 150);
+              });
+
+              input.addEventListener('keydown', function(e){
+                const key = e.key || e.code || '';
+                if(key === 'Enter' || key === 'NumpadEnter'){
+                  e.preventDefault();
+                  clearTimeout(timer);
+                  const q = (input.value || '').trim();
+                  search(q);
+                }
+              });
+            }
+          })();
+        </script>
+      </div>
+    </div>
+  </div>
+  
+  <style is:global>
+    @reference "tailwindcss";
+    
+    .pagefind-ui__search-input {
+      @apply rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    }
+    .pagefind-ui__drawer {
+      @apply gap-4;
+    }
+    .pagefind-ui__result {
+      @apply border-b border-gray-100 py-4 last:border-0;
+    }
+    .pagefind-ui__result-title {
+      @apply font-semibold text-blue-600 hover:underline;
+    }
+    .pagefind-ui__result-excerpt {
+      @apply text-gray-600 text-sm mt-1;
+    }
+    .pagefind-ui__message {
+      @apply text-gray-500 text-center py-4;
+    }
+  </style>
+</Layout>

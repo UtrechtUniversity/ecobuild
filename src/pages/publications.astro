@@ -1,0 +1,175 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import PublicationItem from '../components/PublicationItem.astro';
+import BookItem from '../components/BookItem.astro';
+import HonorCard from '../components/HonorCard.astro';
+import { Book, FileCode, ScrollText, Award, BookOpen, CheckCircle, Clock, FileInput } from 'lucide-react';
+
+// Fetch Collections
+const papers = (await getCollection('publications'))
+  .filter(p => p.data.type === 'paper')
+  .sort((a, b) => b.data.year - a.data.year);
+const books = (await getCollection('books'))
+  .sort((a, b) => b.data.year - a.data.year);
+
+const softwares = (await getCollection('softwares'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const patents = (await getCollection('patents'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const honors = (await getCollection('honors'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const sections = [
+  { id: 'papers', title: 'Published Papers', key: 'achievements.papers', icon: BookOpen, count: papers.length },
+  { id: 'books', title: 'Book Chapters', key: 'achievements.books', icon: Book, count: books.length },
+  { id: 'softwares', title: 'Software Copyrights', key: 'achievements.softwares', icon: FileCode, count: softwares.length },
+  { id: 'patents', title: 'Invention Patents', key: 'achievements.patents', icon: ScrollText, count: patents.length },
+  { id: 'honors', title: 'Group Honors', key: 'achievements.honors', icon: Award, count: honors.length },
+];
+---
+
+<Layout title="Achievements">
+  <div class="max-w-7xl mx-auto px-4 py-12 sm:py-20">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n-key="achievements.title">Publications</h1>
+      <p class="text-lg text-gray-600" data-i18n-key="achievements.subtitle">
+        A comprehensive collection of our academic publications, intellectual property, and collective honors.
+      </p>
+    </div>
+
+    <!-- Navigation Pills -->
+    <div class="flex flex-wrap justify-center gap-4 mb-16 sticky top-20 z-30 bg-white/80 backdrop-blur p-4 rounded-2xl border border-gray-100 shadow-sm">
+      {sections.map(section => (
+        <a 
+          href={`#${section.id}`}
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-50 text-gray-600 hover:bg-blue-50 hover:text-blue-600 transition-colors text-sm font-medium"
+        >
+          <section.icon className="w-4 h-4" />
+          <span data-i18n-key={section.key}>{section.title}</span>
+          <span class="bg-white px-2 py-0.5 rounded-full text-xs text-gray-400 shadow-sm">{section.count}</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="space-y-24">
+      <!-- Papers -->
+      <section id="papers" class="scroll-mt-24">
+        <div class="flex items-center gap-3 mb-8">
+          <BookOpen className="w-8 h-8 text-blue-600" />
+          <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="achievements.papers">Published Papers</h2>
+        </div>
+        <div class="grid gap-6">
+          {papers.map(paper => <PublicationItem entry={paper} />)}
+          {papers.length === 0 && <p class="text-gray-500 italic" data-i18n-key="achievements.noPapers">No papers listed yet.</p>}
+        </div>
+      </section>
+
+      <!-- Books -->
+      <section id="books" class="scroll-mt-24">
+        <div class="flex items-center gap-3 mb-8">
+          <Book className="w-8 h-8 text-blue-600" />
+          <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="achievements.books">Book Chapters</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {books.map(book => <BookItem entry={book} />)}
+          {books.length === 0 && <p class="text-gray-500 italic" data-i18n-key="achievements.noBooks">No book chapters listed yet.</p>}
+        </div>
+      </section>
+
+      <!-- Softwares -->
+      <section id="softwares" class="scroll-mt-24">
+        <div class="flex items-center gap-3 mb-8">
+          <FileCode className="w-8 h-8 text-blue-600" />
+          <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="achievements.softwares">Software Copyrights</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {softwares.map(software => (
+            <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex items-start gap-4 mb-4">
+                <div class="p-3 bg-blue-50 text-blue-600 rounded-lg shrink-0">
+                  <FileCode className="w-6 h-6" />
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 line-clamp-2 pt-1" title={software.data.title}>
+                  {software.data.title}
+                </h3>
+              </div>
+              <div class="space-y-2 text-sm text-gray-600">
+                <div>
+                  <span class="font-medium text-gray-900" data-i18n-key="achievements.developers">Developers:</span> {software.data.developers.join(', ')}
+                </div>
+                <div class="flex items-center justify-between pt-2 border-t border-gray-50">
+                  <span class="font-mono bg-gray-50 px-2 py-0.5 rounded border border-gray-200 text-xs">
+                    {software.data.number}
+                  </span>
+                  <time class="text-gray-400">{software.data.date.toLocaleDateString()}</time>
+                </div>
+              </div>
+            </div>
+          ))}
+           {softwares.length === 0 && <p class="text-gray-500 italic" data-i18n-key="achievements.noSoftwares">No software copyrights listed yet.</p>}
+        </div>
+      </section>
+
+      <!-- Patents -->
+      <section id="patents" class="scroll-mt-24">
+        <div class="flex items-center gap-3 mb-8">
+          <ScrollText className="w-8 h-8 text-blue-600" />
+          <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="achievements.patents">Invention Patents</h2>
+        </div>
+        <div class="grid gap-6">
+          {patents.map(patent => (
+            <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+              <div class="flex gap-4">
+                <div class="shrink-0">
+                  <div class="p-3 bg-amber-50 text-amber-600 rounded-lg">
+                    <ScrollText className="w-6 h-6" />
+                  </div>
+                </div>
+                <div class="flex-grow">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
+                    <h3 class="text-lg font-bold text-gray-900">{patent.data.title}</h3>
+                    <span class={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium border
+                      ${patent.data.status === 'Granted' ? 'bg-green-50 text-green-700 border-green-200' : 
+                        patent.data.status === 'Pending' ? 'bg-amber-50 text-amber-700 border-amber-200' : 
+                        'bg-gray-50 text-gray-600 border-gray-200'}`}>
+                      {patent.data.status === 'Granted' && <CheckCircle className="w-3 h-3" />}
+                      {patent.data.status === 'Pending' && <Clock className="w-3 h-3" />}
+                      {patent.data.status === 'Filed' && <FileInput className="w-3 h-3" />}
+                      {patent.data.status}
+                    </span>
+                  </div>
+                  <div class="text-sm text-gray-600 mb-2">
+                    <span class="font-medium text-gray-900" data-i18n-key="achievements.inventors">Inventors:</span> {patent.data.inventors.join(', ')}
+                  </div>
+                  <div class="flex items-center gap-4 text-sm text-gray-500">
+                    <span class="font-mono bg-gray-50 px-2 py-0.5 rounded border border-gray-200">
+                      {patent.data.number}
+                    </span>
+                    <time>{patent.data.date.toLocaleDateString()}</time>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+           {patents.length === 0 && <p class="text-gray-500 italic" data-i18n-key="achievements.noPatents">No patents listed yet.</p>}
+        </div>
+      </section>
+
+      <!-- Honors -->
+      <section id="honors" class="scroll-mt-24">
+        <div class="flex items-center gap-3 mb-8">
+          <Award className="w-8 h-8 text-blue-600" />
+          <h2 class="text-3xl font-bold text-gray-900" data-i18n-key="achievements.honors">Group Honors</h2>
+        </div>
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {honors.map(honor => <HonorCard honor={honor} />)}
+          {honors.length === 0 && <p class="text-gray-500 italic" data-i18n-key="achievements.noHonors">No group honors listed yet.</p>}
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const researchAreas = await getCollection('research');
+  return researchAreas.map(area => ({
+    params: { slug: area.id.replace(/\.[^/.]+$/, "") },
+    props: { area },
+  }));
+}
+
+const { area } = Astro.props;
+const { Content } = await render(area);
+---
+
+<Layout title={area.data.title}>
+  <article class="max-w-4xl mx-auto px-4 py-12 sm:py-20">
+    <a href="/research" class="inline-flex items-center text-sm text-gray-500 hover:text-blue-600 mb-8 transition-colors">
+      &larr; Back to Research
+    </a>
+
+    <header class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-6">{area.data.title}</h1>
+      {area.data.cover && (
+        <div class="w-full h-64 sm:h-96 rounded-2xl overflow-hidden bg-gray-100 mb-8">
+          <img src={area.data.cover.src} alt={area.data.title} class="w-full h-full object-cover" />
+        </div>
+      )}
+      <p class="text-xl text-gray-600 leading-relaxed">{area.data.description}</p>
+    </header>
+
+    <div class="prose prose-lg prose-blue max-w-none text-gray-700">
+      <Content />
+    </div>
+  </article>
+</Layout>

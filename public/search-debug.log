@@ -1,0 +1,44 @@
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\activities
+  ✓ Found file: development.md
+  ✓ Found file: improvements.md
+  ✓ Found file: interviews.md
+  ✓ Found file: testing.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\books
+  ✓ Found file: 2006-Bishop-pattern-recognition-and-machin.md
+  ✓ Found file: 2010-Szeliski-computer-vision-algorithms-and.md
+  ✓ Found file: 2016-Goodfellow-deep-learning.md
+  ✓ Found file: 2018-Sutton-reinforcement-learning-an-intr.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\honors
+  ✓ Found file: challenge-cup.md
+  ✓ Found file: honor-second.md
+  ✓ Found file: honor-special.md
+  ✓ Found file: honor-third.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\news
+  ✓ Found file: 2025-grant.md
+  ✓ Found file: 2025-paper-award.md
+  ✓ Found file: cvpr-acceptance.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\patents
+  ✓ Found file: attention-method.md
+  ✓ Found file: patent-1.md
+  ✓ Found file: patent-2.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\publications
+  ✓ Found file: 2014-Goodfellow-generative-adversarial-nets.md
+  ✓ Found file: 2016-He-deep-residual-learning-for-ima.md
+  ✓ Found file: 2017-Vaswani-attention-is-all-you-need.md
+  ✓ Found file: 2019-Devlin-bert-pre-training-of-deep-bidi.md
+  ✓ Found file: 2023-Johnson-understanding-context-in-large.md
+  ✓ Found file: 2024-Chen-high-fidelity-image-generation.md
+  ✓ Found file: 2024-OpenAI-gpt-4-technical-report.md
+  ✓ Found file: 2025-Zhang-vision-transformers-for-small-.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\research
+  ✓ Found file: cv.md
+  ✓ Found file: nlp.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\softwares
+  ✓ Found file: image-proc-sys.md
+  ✓ Found file: soft-1.md
+📁 Scanning: C:\Users\stefa\Desktop\EcoBuild\ecobuild-site\src\content\team
+  ✓ Found file: dr-jaco-appelman.md
+  ✓ Found file: dr-katharina-hecht.md
+  ✓ Found file: dr-michael-behrisch.md
+  ✓ Found file: mark-borst.md

@@ -1,0 +1,83 @@
+---
+import { ExternalLink } from "lucide-react";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    partner: CollectionEntry<"partners">;
+}
+
+const { partner } = Astro.props;
+const { name, description, logo, website, type } = partner.data;
+
+// Color mapping for type badges
+const typeColors = {
+    company: "text-blue-700 bg-blue-50 border-blue-100",
+    government: "text-purple-700 bg-purple-50 border-purple-100",
+    academic: "text-emerald-700 bg-emerald-50 border-emerald-100",
+    nonprofit: "text-amber-700 bg-amber-50 border-amber-100",
+};
+---
+
+<div class="group flex flex-col items-center text-center">
+    <!-- Logo Container -->
+    <div
+        class="relative w-32 h-32 mb-4 rounded-xl overflow-hidden bg-white border border-gray-100 group-hover:shadow-lg transition-shadow"
+    >
+        <a
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block w-full h-full p-4"
+        >
+            <img
+                src={logo.src}
+                alt={name}
+                class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+            />
+        </a>
+
+        <!-- Overlay (appears on hover) -->
+        <div
+            class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px] pointer-events-none"
+        >
+            <div class="pointer-events-auto">
+                <a
+                    href={website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="p-3 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all inline-flex items-center justify-center"
+                    title="Visit Website"
+                    aria-label="Visit Website"
+                >
+                    <ExternalLink className="w-5 h-5" />
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info -->
+    <a
+        href={website}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover:underline decoration-blue-600 underline-offset-2 mb-2"
+    >
+        <h3 class="text-lg font-semibold text-gray-900">{name}</h3>
+    </a>
+
+    <!-- Type Badge -->
+    <div class="mb-3">
+        <span
+            class={`inline-block px-2 py-0.5 text-xs font-medium border rounded-full ${typeColors[type]}`}
+        >
+            {type.charAt(0).toUpperCase() + type.slice(1)}
+        </span>
+    </div>
+
+    {
+        description && (
+            <p class="text-sm text-gray-500 line-clamp-2 px-2">{description}</p>
+        )
+    }
+</div>

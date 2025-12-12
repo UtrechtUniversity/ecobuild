@@ -1,0 +1,314 @@
+---
+import { SITE, LOGO_IMAGE } from '../config';
+import { 
+  Menu, X, Globe, ChevronDown, Check, Moon, Sun,
+  Home, BookOpen, Trophy, Users, Calendar, UserPlus, Sparkles, Search
+} from 'lucide-react';
+
+const { nav, i18n, customPages } = SITE;
+
+const iconMap: Record<string, any> = {
+  home: Home,
+  research: BookOpen,
+  achievements: Trophy,
+  team: Users,
+  activities: Calendar,
+  join: UserPlus,
+  search: Search,
+};
+
+// Helper to get icon
+const getIcon = (key: string) => iconMap[key] || Sparkles;
+---
+
+<header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-gray-100 transition-colors duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo & Name -->
+      <div class="flex items-center gap-3">
+        <a href="/" class="flex items-center gap-2 group">
+          {LOGO_IMAGE.enable && SITE.logo && <img src={SITE.logo} alt="Logo" class="h-8 w-8 object-contain" />}
+          <div class="flex flex-col sm:flex-row sm:items-end sm:gap-2 leading-tight">
+            <span class="font-bold text-gray-900 text-lg leading-tight group-hover:text-blue-600 transition-colors">
+              {SITE.labName}
+            </span>
+            <span class="hidden sm:inline text-gray-500 text-sm font-light pb-0.5">
+              {SITE.university}
+          </div>
+        </a>
+      </div>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex gap-6 items-center">
+        {nav.map(item => {
+          if (item.key === 'search') {
+            return (
+              <a 
+                href={item.link} 
+                class="p-2 text-gray-600 hover:text-blue-600 hover:bg-gray-50 rounded-full transition-colors"
+                aria-label={item.text}
+              >
+                <Search className="w-5 h-5" />
+              </a>
+            );
+          }
+          return (
+            <a 
+              href={item.link} 
+              class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+              data-i18n-key={`nav.${item.key}`}
+            >
+              {item.text}
+            </a>
+          );
+        })}
+        
+        <!-- Custom Pages -->
+        {customPages && customPages.map(item => (
+           <a 
+             href={item.link} 
+            class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors"
+             data-i18n-key={item.key} 
+           >
+             {item.text}
+           </a>
+        ))}
+
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-btn" 
+        class="md:hidden p-2 -mr-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors z-[80] relative" 
+        aria-label="Toggle menu"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        onclick="window.toggleMobileMenu(event)"
+      >
+        <span class="icon-menu block transition-transform duration-300">
+          <Menu className="w-6 h-6" />
+        </span>
+        <span class="icon-close hidden absolute inset-0 flex items-center justify-center transition-transform duration-300 rotate-90">
+          <X className="w-6 h-6" />
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Nav Overlay (Solid White) -->
+  <div 
+    id="mobile-menu" 
+    class="fixed inset-0 z-[100] w-screen h-screen bg-white md:hidden hidden flex-col"
+    style="display: none;"
+    role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="mobile-menu-title"
+  >
+    <!-- Header with Close Button -->
+    <div class="flex items-center justify-between px-6 h-20 border-b border-gray-100 shrink-0 bg-white">
+      <div class="flex items-center gap-3">
+        {LOGO_IMAGE.enable && SITE.logo && <img src={SITE.logo} alt="Logo" class="h-10 w-10 object-contain" />}
+        <span class="font-bold text-gray-900 text-xl">{SITE.labName}</span>
+      </div>
+      <button 
+        onclick="window.closeMobileMenu()" 
+        class="p-2 -mr-2 rounded-full text-gray-600 hover:bg-gray-100 transition-colors"
+        aria-label="Close menu"
+      >
+        <X className="w-8 h-8" />
+      </button>
+    </div>
+    
+    <!-- Scrollable Menu Content -->
+    <nav class="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-2 bg-white">
+      {nav.map((item) => (
+        <a 
+          href={item.link} 
+          class="flex items-center justify-between w-full py-4 px-4 text-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-gray-50 rounded-xl transition-all border-b border-gray-100 last:border-0"
+          data-i18n-key={`nav.${item.key}`}
+          onclick="window.closeMobileMenu()"
+        >
+          <span>{item.text}</span>
+          <ChevronDown className="w-5 h-5 -rotate-90 text-gray-400" />
+        </a>
+      ))}
+      
+      <!-- Custom Pages Mobile -->
+      {customPages && customPages.map((item) => (
+        <a 
+          href={item.link} 
+          class="flex items-center justify-between w-full py-4 px-4 text-lg font-medium text-gray-800 hover:text-blue-600 hover:bg-gray-50 rounded-xl transition-all border-b border-gray-100 last:border-0"
+          data-i18n-key={item.key}
+          onclick="window.closeMobileMenu()"
+        >
+           <span>{item.text}</span>
+           <ChevronDown className="w-5 h-5 -rotate-90 text-gray-400" />
+        </a>
+      ))}
+
+    </nav>
+
+    <!-- Footer Info -->
+    <div class="p-8 bg-gray-50 shrink-0 border-t border-gray-200">
+       <p class="text-sm text-gray-500 font-medium text-center">© {new Date().getFullYear()} {SITE.labName}</p>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function() {
+    const btn = document.getElementById('mobile-menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const iconMenu = document.querySelector('.icon-menu');
+    const iconClose = document.querySelector('.icon-close');
+    const langLabel = document.getElementById('current-lang-label');
+
+    let lastFocusedEl = null;
+
+    function setAria(open) {
+      btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menu?.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    function trapFocus(e) {
+      if (!menu || !menu.contains(document.activeElement)) return;
+      if (e.key !== 'Tab') return;
+      const focusable = menu.querySelectorAll('a, button, input, [tabindex]:not([tabindex="-1"])');
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+
+    function onKeydown(e) {
+      if (e.key === 'Escape') {
+        window.closeMobileMenu();
+      } else {
+        trapFocus(e);
+      }
+    }
+
+    function openMenu() {
+      // Show menu container (display: flex)
+      if (menu) {
+        menu.style.display = 'flex';
+        // Force reflow
+        menu.offsetHeight;
+        menu.classList.remove('hidden');
+        
+        // Add simple fade in
+        menu.animate([
+          { opacity: 0 },
+          { opacity: 1 }
+        ], {
+          duration: 200,
+          fill: 'forwards',
+          easing: 'ease-out'
+        });
+      }
+      
+      // Animate hamburger to X
+      iconMenu?.classList.add('rotate-90', 'opacity-0');
+      iconClose?.classList.remove('hidden', 'rotate-90');
+      
+      // Lock body scroll
+      document.body.classList.add('overflow-hidden');
+      setAria(true);
+
+      lastFocusedEl = document.activeElement;
+      // Focus the first link
+      const firstLink = menu?.querySelector('a');
+      firstLink?.focus?.();
+      
+      document.addEventListener('keydown', onKeydown);
+    }
+
+    window.closeMobileMenu = function() {
+      // Animate fade out
+      if (menu) {
+        const animation = menu.animate([
+          { opacity: 1 },
+          { opacity: 0 }
+        ], {
+          duration: 200,
+          fill: 'forwards',
+          easing: 'ease-in'
+        });
+        
+        animation.onfinish = () => {
+          menu.style.display = 'none';
+          menu.classList.add('hidden');
+        };
+      }
+      
+      // Animate X back to hamburger
+      iconMenu?.classList.remove('rotate-90', 'opacity-0');
+      iconClose?.classList.add('rotate-90');
+      setTimeout(() => {
+        iconClose?.classList.add('hidden');
+      }, 200);
+
+      // Unlock body scroll
+      document.body.classList.remove('overflow-hidden');
+      setAria(false);
+
+      document.removeEventListener('keydown', onKeydown);
+      if (lastFocusedEl && typeof lastFocusedEl.focus === 'function') {
+        lastFocusedEl.focus();
+      } else {
+        btn?.focus?.();
+      }
+    };
+
+    window.toggleMobileMenu = function(e) {
+      if (e) e.stopPropagation();
+      if (!menu) return;
+      const isHidden = menu.style.display === 'none' || menu.classList.contains('hidden');
+      if (isHidden) openMenu();
+      else window.closeMobileMenu();
+    };
+
+    // Close on link click in drawer
+    menu?.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', window.closeMobileMenu);
+    });
+
+    // Language handling
+    function updateHeaderLang(lang) {
+      if (langLabel) langLabel.textContent = lang.toUpperCase();
+      document.querySelectorAll('.lang-option').forEach(btn => {
+        const btnLang = btn.getAttribute('data-lang');
+        if (btnLang === lang) {
+          btn.classList.add('text-blue-600', 'bg-blue-50', 'border-blue-200');
+        } else {
+          btn.classList.remove('text-blue-600', 'bg-blue-50', 'border-blue-200');
+        }
+      });
+    }
+
+    window.addEventListener('language-change', (e) => {
+      updateHeaderLang(e.detail.lang);
+    });
+
+    try {
+      const saved = localStorage.getItem('preferred-lang') || defaultLang;
+      updateHeaderLang(saved);
+    } catch {}
+
+    document.querySelectorAll('.lang-option:not(.mobile-lang-option)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.getAttribute('data-lang');
+        if (window.setLanguage) window.setLanguage(lang);
+      });
+    });
+
+    // Auto close when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) window.closeMobileMenu();
+    });
+  })();
+</script>

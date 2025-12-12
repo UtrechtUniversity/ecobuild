@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { ScrollText, CheckCircle, Clock, FileInput } from 'lucide-react';
+
+const patents = (await getCollection('patents')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Patents">
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-20">
+    <div class="mb-12">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n-key="nav.patents">Patents</h1>
+      <p class="text-lg text-gray-600">
+        Our intellectual property contributions and technological innovations.
+      </p>
+    </div>
+
+    <div class="space-y-6">
+      {patents.map(patent => (
+        <div class="bg-white border border-gray-100 rounded-xl p-6 hover:shadow-sm transition-shadow">
+          <div class="flex items-start gap-4">
+            <div class="p-3 bg-blue-50 rounded-lg shrink-0">
+              <ScrollText className="w-6 h-6 text-blue-600" />
+            </div>
+            
+            <div class="flex-grow">
+              <div class="flex items-center justify-between flex-wrap gap-2 mb-2">
+                <h3 class="text-lg font-bold text-gray-900">{patent.data.title}</h3>
+                <span class={`px-2.5 py-0.5 rounded-full text-xs font-medium border flex items-center gap-1
+                  ${patent.data.status === 'Granted' ? 'bg-green-50 text-green-700 border-green-200' : 
+                    patent.data.status === 'Pending' ? 'bg-amber-50 text-amber-700 border-amber-200' : 
+                    'bg-gray-50 text-gray-600 border-gray-200'}`}>
+                  {patent.data.status === 'Granted' && <CheckCircle className="w-3 h-3" />}
+                  {patent.data.status === 'Pending' && <Clock className="w-3 h-3" />}
+                  {patent.data.status === 'Filed' && <FileInput className="w-3 h-3" />}
+                  {patent.data.status}
+                </span>
+              </div>
+              
+              <div class="text-sm text-gray-600 mb-3">
+                <span class="font-medium text-gray-900">Inventors:</span> {patent.data.inventors.join(', ')}
+              </div>
+              
+              <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span class="font-mono bg-gray-50 px-2 py-0.5 rounded border border-gray-200">
+                  {patent.data.number}
+                </span>
+                <time>{patent.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {patents.length === 0 && (
+        <div class="text-center py-12 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+          <p class="text-gray-500">No patents listed yet.</p>
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

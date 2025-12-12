@@ -1,0 +1,103 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import { Calendar, ArrowRight } from 'lucide-react';
+
+const activities = (await getCollection('activities')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const news = (await getCollection('news')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title="Activities">
+  <div class="max-w-7xl mx-auto px-4 py-12 sm:py-20">
+    <div class="mb-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-4" data-i18n-key="activities.title">Team Activities</h1>
+      <p class="text-lg text-gray-600" data-i18n-key="activities.subtitle">
+        Workshops, seminars, and team building events.
+      </p>
+    </div>
+    <script is:inline>
+      function scrollActivities(direction) {
+        const container = document.getElementById('activities-scroll');
+        if (!container) return;
+        const scrollAmount = container.clientWidth * 0.75 * direction;
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+      // Optional: enable arrow button visibility when overflow exists
+      function updateActivityArrows() {
+        const container = document.getElementById('activities-scroll');
+        if (!container) return;
+        const leftBtn = document.querySelector('button[aria-label="Scroll left"]');
+        const rightBtn = document.querySelector('button[aria-label="Scroll right"]');
+        if (leftBtn) leftBtn.style.display = container.scrollLeft > 10 ? 'inline-flex' : 'inline-flex';
+        if (rightBtn) rightBtn.style.display = container.scrollWidth > container.clientWidth + 10 ? 'inline-flex' : 'inline-flex';
+      }
+      if (typeof window !== 'undefined') {
+        window.addEventListener('load', updateActivityArrows);
+        window.addEventListener('resize', updateActivityArrows);
+      }
+    </script>
+
+    <!-- Activities Gallery (horizontal slider) -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n-key="nav.activities">Activities</h2>
+
+    <div class="relative mb-20">
+      <!-- Left / Right buttons -->
+      <button aria-label="Scroll left" type="button" onclick="scrollActivities(-1)" class="absolute -left-2 top-1/2 -translate-y-1/2 z-20 bg-white border border-gray-200 rounded-full p-2 shadow-sm hover:shadow-md hidden md:inline-flex cursor-pointer">
+        <ArrowRight className="w-5 h-5 rotate-180 text-gray-600" />
+      </button>
+      <button aria-label="Scroll right" type="button" onclick="scrollActivities(1)" class="absolute -right-2 top-1/2 -translate-y-1/2 z-20 bg-white border border-gray-200 rounded-full p-2 shadow-sm hover:shadow-md hidden md:inline-flex cursor-pointer">
+        <ArrowRight className="w-5 h-5 text-gray-600" />
+      </button>
+
+      <!-- Scroll container -->
+      <div id="activities-scroll" class="flex gap-8 overflow-x-auto scroll-smooth pb-4 px-2 md:px-0">
+        {activities.map(activity => (
+          <div class="min-w-[280px] sm:min-w-[300px] md:min-w-[320px] lg:min-w-[360px] flex-shrink-0">
+            <a href={`/activities/${activity.id.replace(/\.[^/.]+$/, "")}`} class="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-all block">
+              {activity.data.cover && (
+                <div class="h-56 overflow-hidden bg-gray-100 relative">
+                  <Image 
+                    src={activity.data.cover} 
+                    alt={activity.data.title} 
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    quality={80}
+                    format="webp"
+                    width={600}
+                  />
+                  <div class="flex items-center text-white/90 text-sm absolute bottom-4 left-4 bg-black/30 px-3 py-1 rounded-full backdrop-blur-sm">
+                    <Calendar className="w-4 h-4 mr-2" />
+                    <time>{activity.data.date.toISOString().split('T')[0]}</time>
+                  </div>
+                </div>
+              )}
+              <div class="p-6">
+                <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">{activity.data.title}</h3>
+                <p class="text-gray-600 text-sm line-clamp-3">{activity.data.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+
+        {activities.length === 0 && (
+          <div class="w-full text-center py-12 bg-gray-50 rounded-xl">
+            <p class="text-gray-500" data-i18n-key="activities.noActivities">No activities added yet.</p>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- News List -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-8" data-i18n-key="section.latestNews"><a href="/news" class="text-2xl font-bold text-gray-900 mb-8 hover:underline">Latest News</a></h2>
+    <div class="border-l-2 border-gray-100 pl-8 space-y-12 max-w-3xl">
+      {news.map(item => (
+        <div class="relative">
+          <span class="absolute -left-[37px] top-1.5 w-4 h-4 rounded-full bg-blue-100 border-2 border-white ring-1 ring-blue-600"></span>
+          <time class="block text-sm text-gray-500 mb-2">{item.data.date.toISOString().split('T')[0]}</time>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">{item.data.title}</h3>
+          {item.data.summary && <p class="text-gray-600">{item.data.summary}</p>}
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>

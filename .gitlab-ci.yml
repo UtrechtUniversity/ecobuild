@@ -1,0 +1,28 @@
+image: node:20
+
+stages:
+  - test
+  - deploy
+
+cache:
+  paths:
+    - node_modules/
+
+lint:
+  stage: test
+  script:
+    - npm ci
+    - npm run lint
+
+pages:
+  stage: deploy
+  script:
+    - npm ci
+    - npm run build
+    - rm -rf public
+    - mv dist public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

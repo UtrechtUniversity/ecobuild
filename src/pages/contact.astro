@@ -1,0 +1,113 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Mail, GraduationCap, BookOpen, Code } from "lucide-react";
+import { SITE } from "../config";
+---
+
+<Layout title="Contact Us">
+  <div class="max-w-4xl mx-auto px-4 py-12 sm:py-20">
+    <div class="text-center mb-16">
+      <h1
+        class="text-4xl font-bold text-gray-900 mb-4"
+        data-i18n-key="join.title"
+      >
+        Reach Out
+      </h1>
+      <p
+        class="text-lg text-gray-600 max-w-2xl mx-auto"
+        data-i18n-key="join.subtitle"
+      >
+        Placeholder text <br />
+        We are always looking for motivated people to join our team. If you are interested
+        in our research areas, please contact us!
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-3 mb-16">
+      <div
+        class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div
+          class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4 text-blue-600"
+        >
+          <GraduationCap className="w-6 h-6" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">PhD Students</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          We are looking for researchers with strong mathematical background and
+          coding skills.
+        </p>
+        <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+          <li>Strong math foundation</li>
+          <li>Proficient in Python/C++</li>
+          <li>Publication record is a plus</li>
+        </ul>
+      </div>
+
+      <div
+        class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div
+          class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mb-4 text-green-600"
+        >
+          <BookOpen className="w-6 h-6" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Master Students</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Self-motivated master students who want to dive deep into research are
+          welcome.
+        </p>
+        <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+          <li>Passion for research</li>
+          <li>Good programming skills</li>
+          <li>Commitment to projects</li>
+        </ul>
+      </div>
+
+      <div
+        class="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+      >
+        <div
+          class="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mb-4 text-purple-600"
+        >
+          <Code className="w-6 h-6" />
+        </div>
+        <h3 class="text-xl font-bold text-gray-900 mb-2">Undergraduates</h3>
+        <p class="text-gray-600 text-sm mb-4">
+          Talented undergraduates can join us for research training and
+          internship.
+        </p>
+        <ul class="text-sm text-gray-600 space-y-2 list-disc list-inside">
+          <li>Curiosity driven</li>
+          <li>Fast learner</li>
+          <li>Team player</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-gray-50 rounded-3xl p-8 sm:p-12 text-center">
+      <h2
+        class="text-2xl font-bold text-gray-900 mb-4"
+        data-i18n-key="join.howToApply"
+      >
+        How to Apply
+      </h2>
+      <p
+        class="text-gray-600 mb-8 max-w-2xl mx-auto"
+        data-i18n-key="join.applicationText"
+      >
+        Please send your CV, transcripts, and a brief statement of research
+        interests to our Principal Investigator. Make sure to include
+        "[Application]" in your email subject.
+      </p>
+
+      <a
+        href={`mailto:${SITE.email}`}
+        class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-full font-medium hover:bg-blue-700 transition-colors"
+      >
+        <Mail className="w-5 h-5" />
+        <span data-i18n-key="join.sendEmail">Send Email</span>
+      </a>
+    </div>
+  </div>
+</Layout>

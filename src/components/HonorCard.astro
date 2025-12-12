@@ -1,0 +1,50 @@
+---
+import { Medal, Trophy, Award, Crown, Star } from 'lucide-react';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  honor: CollectionEntry<'honors'>;
+}
+
+const { honor } = Astro.props;
+const { level, type, year, title, award } = honor.data;
+
+const getTrophyConfig = (level: string) => {
+  switch (level) {
+    case 'Special':
+      return { icon: Crown, color: 'text-purple-600', bg: 'from-purple-100 to-pink-100', border: 'border-purple-200' };
+    case 'First':
+      return { icon: Trophy, color: 'text-yellow-500', bg: 'from-yellow-100 to-amber-100', border: 'border-amber-200' };
+    case 'Second':
+      return { icon: Medal, color: 'text-gray-500', bg: 'from-gray-100 to-slate-200', border: 'border-gray-300' };
+    case 'Third':
+      return { icon: Award, color: 'text-amber-700', bg: 'from-orange-100 to-amber-100', border: 'border-orange-200' };
+    default:
+      return { icon: Star, color: 'text-blue-500', bg: 'from-blue-50 to-indigo-50', border: 'border-blue-100' };
+  }
+};
+
+const config = getTrophyConfig(level);
+const Icon = config.icon;
+---
+
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-start gap-4 hover:shadow-md transition-shadow group">
+  <div class={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${config.bg} rounded-full flex items-center justify-center ${config.color} border-4 border-white shadow-sm overflow-hidden relative ring-1 ${config.border}`}>
+     <Icon className="w-8 h-8" />
+  </div>
+  <div class="flex-1">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="px-2.5 py-0.5 text-xs font-bold bg-blue-50 text-blue-600 rounded-full border border-blue-100">
+        {year}
+      </span>
+      <span class="px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">
+        {type}
+      </span>
+    </div>
+    <h3 class="text-lg font-bold text-gray-900 mb-1 leading-tight group-hover:text-blue-600 transition-colors">{title}</h3>
+    <p class={`font-bold text-sm flex items-center gap-1 ${config.color}`}>
+      <Icon className="w-4 h-4" />
+      {award}
+    </p>
+  </div>
+</div>
