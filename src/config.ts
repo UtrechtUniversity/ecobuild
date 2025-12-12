@@ -9,7 +9,7 @@ export const SITE = {
   lightAndDarkMode: true,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
-  
+
   // Lab Info
   labName: 'EcoBuild',
   university: 'Utrecht University',
@@ -40,7 +40,7 @@ export const SITE = {
   customPages: [
     { text: 'About', link: '/about', key: 'about' }
   ],
-  
+
   // i18n Config
   i18n: {
     enabled: false,

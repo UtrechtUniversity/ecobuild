@@ -1,7 +1,7 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import { SITE } from '../config';
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import { SITE } from "../config";
 //import { ui, defaultLang } from '../i18n/ui';
 
 interface Props {
@@ -10,7 +10,9 @@ interface Props {
 }
 
 const { title, description = SITE.description } = Astro.props;
-const pageTitle = title ? `${title} | ${SITE.labName}` : `${SITE.labName} - ${SITE.university}`;
+const pageTitle = title
+  ? `${title} | ${SITE.labName}`
+  : `${SITE.labName} - ${SITE.university}`;
 
 // Define dynamic OG Image
 // If it's the homepage, use index.png. Otherwise, try to map the path to a slug.
@@ -19,12 +21,19 @@ const pageTitle = title ? `${title} | ${SITE.labName}` : `${SITE.labName} - ${SI
 // But standard pages like /research match /og/research.
 // What about nested pages like /research/cv? Our OG generator doesn't handle them yet (it only has static pages list).
 // So we will use a fallback.
-const currentPath = Astro.url.pathname.replace(/^\/|\/$/g, '');
-const ogSlug = currentPath === '' ? 'index' : currentPath;
+const currentPath = Astro.url.pathname.replace(/^\/|\/$/g, "");
+const ogSlug = currentPath === "" ? "index" : currentPath;
 // Check if the current path is one of our supported OG pages (index, research, team, publications, news, join).
 // If not, fallback to index.
-const supportedOgPages = ['index', 'research', 'team', 'publications', 'news', 'join'];
-const finalOgSlug = supportedOgPages.includes(ogSlug) ? ogSlug : 'index';
+const supportedOgPages = [
+  "index",
+  "research",
+  "team",
+  "publications",
+  "news",
+  "join",
+];
+const finalOgSlug = supportedOgPages.includes(ogSlug) ? ogSlug : "index";
 const ogImage = new URL(`/og/${finalOgSlug}.png`, Astro.url);
 ---
 
@@ -32,12 +41,19 @@ const ogImage = new URL(`/og/${finalOgSlug}.png`, Astro.url);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self';" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self';"
+    />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/ecobuild-website/favicon.svg"
+    />
     <meta name="generator" content={Astro.generator} />
-    
+
     <title>{pageTitle}</title>
 
     <!-- Open Graph / Facebook -->
@@ -55,21 +71,25 @@ const ogImage = new URL(`/og/${finalOgSlug}.png`, Astro.url);
     <meta property="twitter:image" content={ogImage} />
 
     {
-      Astro.url.pathname === '/' && (
-        <script is:inline type="application/ld+json" set:html={JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          "name": SITE.author,
-          "url": SITE.website,
-          "image": new URL(SITE.avatar || SITE.logo, SITE.website).href,
-          "jobTitle": "Principal Investigator",
-          "worksFor": {
-            "@type": "Organization",
-            "name": SITE.labName,
-            "url": SITE.website
-          },
-          "description": SITE.description
-        })} />
+      Astro.url.pathname === "/" && (
+        <script
+          is:inline
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: SITE.author,
+            url: SITE.website,
+            image: new URL(SITE.avatar || SITE.logo, SITE.website).href,
+            jobTitle: "Principal Investigator",
+            worksFor: {
+              "@type": "Organization",
+              name: SITE.labName,
+              url: SITE.website,
+            },
+            description: SITE.description,
+          })}
+        />
       )
     }
   </head>
@@ -78,11 +98,15 @@ const ogImage = new URL(`/og/${finalOgSlug}.png`, Astro.url);
     <main class="flex-grow" data-pagefind-body>
       <slot />
     </main>
-    
+
     <footer class="border-t border-gray-100 py-8 mt-12 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
         <p>
-          <a href="https://github.com/fjd2004711/scholar-lite" target="_blank" class="hover:text-gray-700 inline-flex items-center gap-1 transition-colors">
+          <a
+            href="https://github.com/fjd2004711/scholar-lite"
+            target="_blank"
+            class="hover:text-gray-700 inline-flex items-center gap-1 transition-colors"
+          >
             Built with Scholar-Lite Open Source Template
           </a>
         </p>
