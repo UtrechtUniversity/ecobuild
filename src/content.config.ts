@@ -127,15 +127,15 @@ const softwares = defineCollection({
   }),
 });
 
-const honors = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/honors" }),
+const presentations = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/presentations" }),
   schema: z.object({
     title: z.string(),
-    award: z.string(), // e.g., "Gold Medal", "First Prize"
-    date: z.date(),
-    year: z.string(), // Display year on badge
-    type: z.enum(['Challenge Cup', 'Internet+', 'Other']).default('Other'),
-    level: z.enum(['Special', 'First', 'Second', 'Third']).default('Third'),
+    date: z.string(),
+    type: z.string().optional(), // Presentation, Poster Presentation, etc.
+    style: z.enum(['presentation', 'conference']).default('presentation'),
+    url: z.string().optional(),
+    order: z.number().optional().default(100), // For manual sorting if needed
   }),
 });
 
@@ -168,7 +168,7 @@ export const collections = {
   research,
   patents,
   softwares,
-  honors,
+  presentations,
   activities,
   partners,
 };

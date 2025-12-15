@@ -1,0 +1,76 @@
+---
+import { Medal, Trophy, Award, Crown, Star, Presentation } from "lucide-react";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"presentations">;
+}
+
+const { entry } = Astro.props;
+const { title, date, type, style } = entry.data;
+
+// Map style/type to "HonorCard-like" config
+const getTrophyConfig = (style: string) => {
+  switch (style) {
+    case "conference":
+      // Map Conference to a distinctive look (e.g. Purple/Crown or Yellow/Trophy)
+      return {
+        icon: Crown,
+        color: "text-purple-600",
+        bg: "from-purple-100 to-pink-100",
+        border: "border-purple-200",
+      };
+    case "presentation":
+    default:
+      // Map Presentation to standard Blue/Star or similar
+      return {
+        icon: Presentation, // Using Presentation icon instead of Star if appropriate, or stick to Star
+        color: "text-blue-500",
+        bg: "from-blue-50 to-indigo-50",
+        border: "border-blue-100",
+      };
+  }
+};
+
+const config = getTrophyConfig(style);
+const Icon = config.icon;
+---
+
+<div
+  class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex items-start gap-4 hover:shadow-md transition-shadow group h-full text-left"
+>
+  <div
+    class={`flex-shrink-0 w-16 h-16 bg-gradient-to-br ${config.bg} rounded-full flex items-center justify-center ${config.color} border-4 border-white shadow-sm overflow-hidden relative ring-1 ${config.border}`}
+  >
+    <Icon className="w-8 h-8" />
+  </div>
+  <div class="flex-1 min-w-0">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span
+        class="px-2.5 py-0.5 text-xs font-bold bg-blue-50 text-blue-600 rounded-full border border-blue-100"
+      >
+        {date}
+      </span>
+      {
+        style && (
+          <span class="px-2.5 py-0.5 text-xs font-medium bg-gray-100 text-gray-600 rounded-full capitalize">
+            {style}
+          </span>
+        )
+      }
+    </div>
+    <h3
+      class="text-lg font-bold text-gray-900 mb-1 leading-tight group-hover:text-blue-600 transition-colors line-clamp-3"
+    >
+      {title}
+    </h3>
+    {
+      type && (
+        <p class={`font-bold text-sm flex items-center gap-1 ${config.color}`}>
+          <Icon className="w-4 h-4" />
+          {type}
+        </p>
+      )
+    }
+  </div>
+</div>
