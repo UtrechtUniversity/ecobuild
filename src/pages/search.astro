@@ -8,13 +8,25 @@ import path from "path";
 import { fileURLToPath } from "url";
 
 const rawEntries: any[] = [];
+// Base path for deployment
+const BASE_PATH = "/ecobuild-website";
+
+// Define allowed collections
+const ALLOWED_COLLECTIONS = [
+  "publications",
+  "presentations",
+  "partners",
+  "team",
+  "softwares",
+  "activities",
+];
 
 async function walkDir(dirPath: string) {
   let dirents;
   try {
     dirents = await fs.readdir(dirPath, { withFileTypes: true });
   } catch (e) {
-    console.error("Failed to read directory", dirPath, e);
+    // Directory might not exist (e.g. if no partners yet), just ignore
     return;
   }
 
@@ -46,41 +58,42 @@ async function walkDir(dirPath: string) {
         const body = raw
           .replace(/^---[\s\S]*?---\r?\n?/, "")
           .replace(/\r?\n/g, " ");
+
+        // Determine collection name from path relative to src/content
+        // e.g. .../src/content/publications/item.md -> publications
         const idx = childPath.indexOf(path.join("src", "content"));
-        const rel =
-          idx !== -1
-            ? childPath.slice(idx + path.join("src", "content").length)
-            : "/" + dirent.name;
+        let url = "";
 
-        // Custom URL mapping for collections that live on aggregate pages
-        let url = rel.replace(/\\/g, "/").replace(/\.mdx?$/, "");
-        const collection = url.split("/")[1]; // e.g. "presentations" from "/presentations/item"
+        if (idx !== -1) {
+          const rel = childPath.slice(idx + path.join("src", "content").length);
+          const parts = rel.split(path.sep).filter((p) => p); // Remove empty strings
+          const collection = parts[0];
+          const slug = rel.replace(/\\/g, "/").replace(/\.mdx?$/, "");
 
-        // Base path for deployment
-        const BASE_PATH = "/ecobuild-website";
-
-        if (collection === "presentations") {
-          url = `${BASE_PATH}/publications#presentations`;
-        } else if (collection === "publications") {
-          const type = getField("type");
-          if (
-            type &&
-            (type.includes("newspaper") || type.includes("Newspaper"))
-          ) {
-            url = `${BASE_PATH}/publications#newspapers`;
+          if (collection === "presentations") {
+            url = `${BASE_PATH}/publications#presentations`;
+          } else if (collection === "publications") {
+            const type = getField("type");
+            if (
+              type &&
+              (type.includes("newspaper") || type.includes("Newspaper"))
+            ) {
+              url = `${BASE_PATH}/publications#newspapers`;
+            } else {
+              url = `${BASE_PATH}/publications#papers`;
+            }
+          } else if (collection === "softwares") {
+            url = `${BASE_PATH}/publications#softwares`;
+          } else if (collection === "activities") {
+            // extract slug properly for activities
+            url = `${BASE_PATH}${slug}`;
           } else {
-            url = `${BASE_PATH}/publications#papers`;
+            // Default for team, partners, etc.
+            url = `${BASE_PATH}${slug}`;
           }
-        } else if (collection === "softwares") {
-          url = `${BASE_PATH}/publications#softwares`;
-        } else if (collection === "patents") {
-          url = `${BASE_PATH}/publications#patents`;
-        } else if (collection === "books") {
-          url = `${BASE_PATH}/publications`;
         } else {
-          // Default handling for other pages (like /team/member)
-          // If 'rel' already starts with /, we append it to BASE_PATH
-          url = `${BASE_PATH}${url}`;
+          // Fallback
+          url = `${BASE_PATH}/${dirent.name.replace(/\.mdx?$/, "")}`;
         }
 
         rawEntries.push({
@@ -102,7 +115,11 @@ async function walkDir(dirPath: string) {
 }
 
 const contentRoot = fileURLToPath(new URL("../content/", import.meta.url));
-await walkDir(contentRoot);
+
+// Only walk allowed collections
+for (const collection of ALLOWED_COLLECTIONS) {
+  await walkDir(path.join(contentRoot, collection));
+}
 
 const SEARCH_INDEX = rawEntries;
 
@@ -148,21 +165,33 @@ try {
           No results.
         </div>
 
-        <script is:inline define:vars={{ SEARCH_INDEX }}>
+        <script is:inline define:vars={{ SEARCH_INDEX, BASE_PATH }}>
           window.__SEARCH_INDEX = SEARCH_INDEX;
+          window.__BASE_PATH = BASE_PATH;
         </script>
 
         <script is:inline>
           (function () {
             let INDEX = window.__SEARCH_INDEX || [];
+            const BASE_PATH = window.__BASE_PATH || "";
+
             const tryLoadRemote = async () => {
               try {
-                const res = await fetch("/search-index.json");
+                // Use BASE_PATH to construct the correct URL
+                const fetchUrl = `${BASE_PATH}/search-index.json`;
+                const res = await fetch(fetchUrl);
                 if (res.ok) {
                   INDEX = await res.json();
+                } else {
+                  // Fallback to relative path if absolute fails
+                  console.warn(
+                    `Failed to fetch from ${fetchUrl}, trying root...`,
+                  );
+                  const res2 = await fetch("/search-index.json");
+                  if (res2.ok) INDEX = await res2.json();
                 }
               } catch (e) {
-                console.error("Failed to fetch /search-index.json", e);
+                console.error("Failed to fetch search-index.json", e);
               }
             };
             if (!INDEX || INDEX.length === 0) tryLoadRemote();
