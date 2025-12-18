@@ -32,17 +32,17 @@ export const SITE = {
   // Navigation
   nav: [
     { text: 'Home', link: '/', key: 'home' },
+    { text: 'About', link: '/about', key: 'about' },
     { text: 'Publications', link: '/publications', key: 'publications' },
     //{ text: 'Success Stories', link: '/success-stories', key: 'success-stories' },
     { text: 'Team', link: '/team', key: 'team' },
     //{ text: 'Activities', link: '/activities', key: 'activities' },
     { text: 'Contact Us', link: '/contact', key: 'contact' },
-    { text: 'Search', link: '/search', key: 'search' },
+    //{ text: 'Search', link: '/search', key: 'search' },
   ],
 
   // Custom Pages (Appended after 'Join Us')
   customPages: [
-    { text: 'About', link: '/about', key: 'about' },
     { text: 'Tools', link: '/tool', key: 'tool' }
   ],
 
