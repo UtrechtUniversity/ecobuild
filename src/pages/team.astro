@@ -38,6 +38,11 @@ const groups = [
     roles: ["PhD Student"],
   },
   {
+    id: "external",
+    titleKey: "team.external",
+    roles: ["External"],
+  },
+  {
     id: "master",
     titleKey: "team.master",
     roles: ["Master Student"],
@@ -68,7 +73,8 @@ const getRolePriority = (role: string) => {
     "Student Assistant": 9,
     Undergraduate: 10,
     Alumni: 11,
-    "Policy Advisor": 12,
+    External: 12,
+    "Policy Advisor": 13,
   };
   return priorities[role] ?? 99;
 };
@@ -135,15 +141,17 @@ const groupedMembers = groups.reduce(
                     ? "Researchers"
                     : group.id === "staff"
                       ? "Policy Advisors"
-                      : group.id === "phd"
-                        ? "PhD Students"
-                        : group.id === "master"
-                          ? "Master Students"
-                          : group.id === "undergrad"
-                            ? "Students"
-                            : group.id === "alumni"
-                              ? "Alumni"
-                              : ""}
+                      : group.id === "external"
+                        ? "External Team"
+                        : group.id === "phd"
+                          ? "PhD Students"
+                          : group.id === "master"
+                            ? "Master Students"
+                            : group.id === "undergrad"
+                              ? "Students"
+                              : group.id === "alumni"
+                                ? "Alumni"
+                                : ""}
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
               {group.members.map((member) => (
