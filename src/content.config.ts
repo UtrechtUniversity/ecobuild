@@ -71,7 +71,8 @@ const team = defineCollection({
       'Alumni',
       'Policy Advisor',
       'Lecturer',
-      'Student Assistant'
+      'Student Assistant',
+      'External'
     ]),
     title: z.array(z.string()).optional(), // For specific academic titles like "Academician", "Changjiang Scholar"
     avatar: image(),
@@ -132,8 +133,8 @@ const presentations = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/presentations" }),
   schema: z.object({
     title: z.string(),
-    date: z.string(),
-    type: z.string().optional(), // Presentation, Poster Presentation, etc.
+    date: z.date(),
+    event: z.string().optional(),
     style: z.enum(['presentation', 'conference']).default('presentation'),
     url: z.string().optional(),
     order: z.number().optional().default(100), // For manual sorting if needed

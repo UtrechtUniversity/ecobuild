@@ -1,13 +1,23 @@
 ---
-import { Mail, Globe, GraduationCap } from 'lucide-react';
-import type { CollectionEntry } from 'astro:content';
+import { Mail, Globe, GraduationCap } from "lucide-react";
+import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  member: CollectionEntry<'team'>;
+  member: CollectionEntry<"team">;
 }
 
 const { member } = Astro.props;
-const { name, role, avatar, bio, email, website, linkedin, github, googleScholar } = member.data;
+const {
+  name,
+  role,
+  avatar,
+  bio,
+  email,
+  website,
+  linkedin,
+  github,
+  googleScholar,
+} = member.data;
 
 // Color mapping for title badges
 const badgeColors = [
@@ -15,70 +25,155 @@ const badgeColors = [
   "text-purple-700 bg-purple-50 border-purple-100",
   "text-emerald-700 bg-emerald-50 border-emerald-100",
   "text-amber-700 bg-amber-50 border-amber-100",
-  "text-rose-700 bg-rose-50 border-rose-100"
+  "text-rose-700 bg-rose-50 border-rose-100",
 ];
 ---
 
 <div class="group flex flex-col items-center text-center">
   <!-- Avatar Container -->
-  <div class="relative w-48 h-48 mb-4 rounded-xl overflow-hidden bg-gray-100 group-hover:shadow-lg transition-shadow">
-    <a href={`/team/${member.id.replace(/\.[^/.]+$/, "")}`} class="block w-full h-full">
-      <img 
-        src={avatar.src} 
-        alt={name} 
-        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+  <div
+    class="relative w-48 h-48 mb-4 rounded-xl overflow-hidden bg-gray-100 group-hover:shadow-lg transition-shadow"
+  >
+    <a
+      href={`${import.meta.env.BASE_URL}/team/${member.id.replace(/\.[^/.]+$/, "")}`}
+      class="block w-full h-full"
+    >
+      <img
+        src={avatar.src}
+        alt={name}
+        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
       />
     </a>
-    
+
     <!-- Social Overlay (appears on hover) -->
-    <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 backdrop-blur-[2px] pointer-events-none">
+    <div
+      class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3 backdrop-blur-[2px] pointer-events-none"
+    >
       <div class="pointer-events-auto flex flex-wrap justify-center gap-2 px-2">
-      {email && (
-        <a href={`mailto:${email}`} class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all" title="Email" aria-label="Email">
-          <Mail className="w-4 h-4" />
-        </a>
-      )}
-      {website && (
-        <a href={website} target="_blank" class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all" title="Website" aria-label="Website">
-          <Globe className="w-4 h-4" />
-        </a>
-      )}
-      {linkedin && (
-        <a href={linkedin} target="_blank" class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all" title="LinkedIn" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-        </a>
-      )}
-      {github && (
-        <a href={github} target="_blank" class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all" title="GitHub" aria-label="GitHub">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-        </a>
-      )}
-      {googleScholar && (
-        <a href={googleScholar} target="_blank" class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all" title="Google Scholar" aria-label="Google Scholar">
-          <GraduationCap className="w-4 h-4" />
-        </a>
-      )}
+        {
+          email && (
+            <a
+              href={`mailto:${email}`}
+              class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all"
+              title="Email"
+              aria-label="Email"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+          )
+        }
+        {
+          website && (
+            <a
+              href={website}
+              target="_blank"
+              class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all"
+              title="Website"
+              aria-label="Website"
+            >
+              <Globe className="w-4 h-4" />
+            </a>
+          )
+        }
+        {
+          linkedin && (
+            <a
+              href={linkedin}
+              target="_blank"
+              class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all"
+              title="LinkedIn"
+              aria-label="LinkedIn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4"
+              >
+                <>
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </>
+              </svg>
+            </a>
+          )
+        }
+        {
+          github && (
+            <a
+              href={github}
+              target="_blank"
+              class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all"
+              title="GitHub"
+              aria-label="GitHub"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="w-4 h-4"
+              >
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+            </a>
+          )
+        }
+        {
+          googleScholar && (
+            <a
+              href={googleScholar}
+              target="_blank"
+              class="p-2 bg-white rounded-full text-gray-700 hover:text-blue-600 hover:scale-110 transition-all"
+              title="Google Scholar"
+              aria-label="Google Scholar"
+            >
+              <GraduationCap className="w-4 h-4" />
+            </a>
+          )
+        }
       </div>
     </div>
   </div>
 
   <!-- Info -->
-  <a href={`/team/${member.id.replace(/\.[^/.]+$/, "")}`} class="hover:underline decoration-blue-600 underline-offset-2 mb-2">
+  <a
+    href={`${import.meta.env.BASE_URL}/team/${member.id.replace(/\.[^/.]+$/, "")}`}
+    class="hover:underline decoration-blue-600 underline-offset-2 mb-2"
+  >
     <h3 class="text-lg font-semibold text-gray-900">{name}</h3>
   </a>
-  
-  {member.data.title && member.data.title.length > 0 && (
-    <div class="flex flex-wrap justify-center gap-2 mb-3 px-2">
-      {member.data.title.map((t, index) => (
-        <span class={`inline-block px-2 py-0.5 text-xs font-medium border rounded-full ${badgeColors[index % badgeColors.length]}`}>
-          {t}
-        </span>
-      ))}
-    </div>
-  )}
-  
-  {/* Role display removed as per request, relying on section headers and title badges */}
-  
+
+  {
+    member.data.title && member.data.title.length > 0 && (
+      <div class="flex flex-wrap justify-center gap-2 mb-3 px-2">
+        {member.data.title.map((t, index) => (
+          <span
+            class={`inline-block px-2 py-0.5 text-xs font-medium border rounded-full ${badgeColors[index % badgeColors.length]}`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  {
+    /* Role display removed as per request, relying on section headers and title badges */
+  }
+
   {bio && <p class="text-sm text-gray-500 line-clamp-2 px-2">{bio}</p>}
 </div>

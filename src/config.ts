@@ -2,28 +2,28 @@ import heroImage from './assets/hero-real.jpg';
 
 export const SITE = {
   website: 'https://scholar-lite-demo.netlify.app/', // Replace with your actual deployed URL
-  author: 'EcoBuild',
+  author: 'EcoBUILD',
   description: 'A lightweight, modern static website template for academic labs and scholars.',
-  title: 'EcoBuild',
+  title: 'EcoBUILD',
   ogImage: 'astropaper-og.jpg',  // No idea what this does
   lightAndDarkMode: true,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 
   // Lab Info
-  labName: 'EcoBuild',
+  labName: 'EcoBUILD',
   university: 'Utrecht University',
   logo: '/assets/Utrecht_University_logo.png', // Logo path
   avatar: '/assets/Utrecht_University_logo.png', // Avatar for SEO/Schema
-  email: 'k.hecht@uu.nl', // Contact email for Join Us page
+  email: 'katharina.hecht11@gmail.com', // Contact email for Join Us page
 
   // Hero Section (Home Page) - Main content does not need to be translated for 8 languages by default
   hero: {
     title: 'Data-driven nexus for sustainable building design',
-    subtitle: 'EcoBuild - the largest evidence-based, open-access and open-source information platform focusing on ecological benefits of design strategies.',
+    subtitle: 'EcoBUILD - the largest evidence-based, open-access and open-source information platform focusing on ecological benefits of design strategies.',
     subtitleLink: {
       text: 'More about our research at Utrecht University.',
-      url: 'https://www.uu.nl/en/research/copernicus-institute-of-sustainable-development' // Placeholder URL, user can update
+      url: 'https://www.uu.nl/en/research/sustainability/data-driven-nexus-for-sustainable-building-design'
     },
     action: 'View Publications', // Optional call to action text
     image: heroImage, // Hero image path
