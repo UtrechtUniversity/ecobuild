@@ -8,6 +8,8 @@ interface Props {
 
 const { partner } = Astro.props;
 const { name, description, logo, website, type } = partner.data;
+const slug = partner.id.replace(/\.[^/.]+$/, "");
+const internalLink = `/ecobuild/partners/${slug}`;
 
 // Color mapping for type badges
 const typeColors = {
@@ -23,12 +25,7 @@ const typeColors = {
     <div
         class="relative w-32 h-32 mb-4 rounded-xl overflow-hidden bg-white border border-gray-100 group-hover:shadow-lg transition-shadow"
     >
-        <a
-            href={website}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="block w-full h-full p-4"
-        >
+        <a href={internalLink} class="block w-full h-full p-4">
             <img
                 src={logo.src}
                 alt={name}
@@ -58,9 +55,7 @@ const typeColors = {
 
     <!-- Info -->
     <a
-        href={website}
-        target="_blank"
-        rel="noopener noreferrer"
+        href={internalLink}
         class="hover:underline decoration-blue-600 underline-offset-2 mb-2"
     >
         <h3 class="text-lg font-semibold text-gray-900">{name}</h3>
