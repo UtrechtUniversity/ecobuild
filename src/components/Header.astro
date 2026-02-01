@@ -47,7 +47,7 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
               <img
                 src={`/ecobuild${SITE.logo}`}
                 alt="Logo"
-                class="h-8 w-8 object-contain"
+                class="h-8 md:h-10 w-auto object-contain"
               />
             )
           }
@@ -176,7 +176,11 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
       <div class="flex items-center gap-3">
         {
           LOGO_IMAGE.enable && SITE.logo && (
-            <img src={SITE.logo} alt="Logo" class="h-10 w-10 object-contain" />
+            <img
+              src={`/ecobuild${SITE.logo}`}
+              alt="Logo"
+              class="h-10 w-auto object-contain"
+            />
           )
         }
         <span class="font-bold text-gray-900 text-xl">{SITE.labName}</span>

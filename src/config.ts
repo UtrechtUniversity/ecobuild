@@ -3,7 +3,7 @@ import heroImage from './assets/hero-real.jpg';
 export const SITE = {
   website: 'https://utrechtuniversity.github.io/ecobuild',
   author: 'Stefan Leon',
-  description: 'EcoBUILD - the largest evidence-based, open-access and open-source information platform focusing on ecological benefits of design strategies.',
+  description: 'The largest evidence-based, open-access and open-source information platform focusing on ecological benefits of design strategies.',
   title: 'EcoBUILD',
   //ogImage: 'astropaper-og.jpg',  // No idea what this does
   lightAndDarkMode: true,

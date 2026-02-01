@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Work in Progress Pages
+Disallow: /news
+Disallow: /news/*
+Disallow: /achievements
+Disallow: /activities
+Disallow: /activities/*
+Disallow: /search
+Disallow: /success-stories
+Disallow: /research
+Disallow: /research/*
+Disallow: /books/*
+Disallow: /softwares/*
+
+# Technical / Search Assets
+Disallow: /search-index.json
+Disallow: /_pagefind/
+Disallow: /404
+
+Sitemap: https://utrechtuniversity.github.io/ecobuild/sitemap-index.xml

@@ -56,6 +56,11 @@ const ogImage = new URL(
       href={`${import.meta.env.BASE_URL}/assets/Utrecht_University_logo.png`}
     />
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={Astro.url.href} />
+    <link
+      rel="sitemap"
+      href={`${import.meta.env.BASE_URL}/sitemap-index.xml`}
+    />
 
     <title>{pageTitle}</title>
 
