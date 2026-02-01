@@ -1,11 +1,11 @@
 import heroImage from './assets/hero-real.jpg';
 
 export const SITE = {
-  website: 'https://scholar-lite-demo.netlify.app/', // Replace with your actual deployed URL
-  author: 'EcoBUILD',
-  description: 'A lightweight, modern static website template for academic labs and scholars.',
+  website: 'https://utrechtuniversity.github.io/ecobuild',
+  author: 'Stefan Leon',
+  description: 'EcoBUILD - the largest evidence-based, open-access and open-source information platform focusing on ecological benefits of design strategies.',
   title: 'EcoBUILD',
-  ogImage: 'astropaper-og.jpg',  // No idea what this does
+  //ogImage: 'astropaper-og.jpg',  // No idea what this does
   lightAndDarkMode: true,
   postPerPage: 3,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
@@ -80,5 +80,5 @@ export const SOCIALS = [
 ];
 
 // Default language configuration
-//export const DEFAULT_LANG: 'zh' | 'en' | 'ja' | 'ko' | 'fr' | 'de' | 'es' | 'ru' = 'en'; 
+//export const DEFAULT_LANG: 'zh' | 'en' | 'ja' | 'ko' | 'fr' | 'de' | 'es' | 'ru' = 'en';
 // Not using any translation for now
