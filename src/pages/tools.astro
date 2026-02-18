@@ -1,0 +1,160 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import placeholder from "../assets/placeholder.png";
+import { ExternalLink, ArrowRight } from "lucide-react";
+
+const screenshots = import.meta.glob<{ default: ImageMetadata }>(
+    "../assets/screenshots/*.{png,jpg,jpeg,svg}",
+    { eager: true },
+);
+
+const internalTools = [
+    {
+        title: "Ecosystem Services Map",
+        description:
+            "Explore the various ecosystem services provided by different environments and their impact on sustainable design.",
+        link: "/tool/ecosystem-map",
+        image: screenshots["../assets/screenshots/kumu-map-screenshot.png"]
+            .default,
+    },
+    {
+        title: "Sustainable Buildings Graph",
+        description:
+            "Navigate through the complex nexus of data-driven strategies for sustainable building design using our graph explorer.",
+        link: "/tool/graph-explorer",
+        image: screenshots[
+            "../assets/screenshots/graph-explorer-screenshot.png"
+        ].default,
+    },
+    {
+        title: "Urban Nature Atlas",
+        description:
+            "Project collaboration with NATURVATION Urban Atlas to explore different ways of visualizing the Urban Atlas interface. Many thanks to Laszlo Pinter and the NATURVATION team.",
+        link: "https://naturvation.eu/atlas.html",
+        image: screenshots["../assets/screenshots/urban-atlas-screenshot.png"]
+            .default,
+    },
+];
+
+const projectScreenshots = Object.entries(screenshots)
+    .filter(([path]) => path.split("/").pop()?.startsWith("Group"))
+    .map(([_, module]) => module);
+
+const externalResources = projectScreenshots.map((s, i) => ({
+    title: `Project ${i + 1}`,
+    link: "https://utrechtuniversity.github.io/ecobuild",
+    image: s.default,
+}));
+---
+
+<Layout title="Tools & Resources">
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-900 mb-4">
+                Tools & Resources
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl">
+                Access our interactive tools and evidence-based platforms
+                designed to support sustainable building design and ecosystem
+                service analysis.
+            </p>
+        </div>
+
+        <!-- Internal Tools Section -->
+        <section class="mb-20">
+            <h2
+                class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2"
+            >
+                Core Tools
+                <span class="h-px flex-grow bg-gray-100 ml-4"></span>
+            </h2>
+            <div class="grid gap-8 md:grid-cols-2">
+                {
+                    internalTools.map((tool) => {
+                        const isExternal = tool.link.startsWith("http");
+                        return (
+                            <a
+                                href={
+                                    isExternal
+                                        ? tool.link
+                                        : `/ecobuild${tool.link}`
+                                }
+                                target={isExternal ? "_blank" : undefined}
+                                rel={
+                                    isExternal
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                }
+                                class="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 block"
+                            >
+                                <div class="aspect-video overflow-hidden bg-gray-50 relative">
+                                    <Image
+                                        src={tool.image}
+                                        alt={tool.title}
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </div>
+                                <div class="p-8">
+                                    <div class="flex justify-between items-start mb-4">
+                                        <h3 class="text-2xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                            {tool.title}
+                                        </h3>
+                                        <ArrowRight className="w-6 h-6 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                                    </div>
+                                    <p class="text-gray-600 text-lg leading-relaxed">
+                                        {tool.description}
+                                    </p>
+                                </div>
+                            </a>
+                        );
+                    })
+                }
+            </div>
+        </section>
+
+        <!-- External Section -->
+        <section>
+            <h2
+                class="text-2xl font-bold text-gray-900 mb-8 flex items-center gap-2"
+            >
+                Student Projects
+                <span class="h-px flex-grow bg-gray-100 ml-4"></span>
+            </h2>
+            <h3
+                class="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2"
+            >
+                Information Visualization 2025-2026
+                <span class="h-px flex-grow bg-gray-100 ml-4"></span>
+            </h3>
+            <div class="grid gap-8 md:grid-cols-3">
+                {
+                    externalResources.map((res) => (
+                        <div class="group bg-gray-50/50 rounded-xl border border-gray-100 overflow-hidden hover:bg-white hover:shadow-lg transition-all duration-300 block">
+                            <div class="aspect-video overflow-hidden bg-gray-100 relative">
+                                <Image
+                                    src={res.image}
+                                    alt={res.title}
+                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                                />
+                                {/* // Leftover code after removing student project details 
+                                 <div class="absolute top-4 right-4 p-2 bg-white/90 backdrop-blur rounded-lg shadow-sm">
+                                    <ExternalLink class="w-4 h-4 text-gray-600" />
+                                </div> */}
+                            </div>
+                            {/* <div class="p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                    {res.title}
+                                </h3>
+                                <p class="text-gray-600 text-sm line-clamp-2">
+                                    {res.description}
+                                </p>
+                            </div> */}
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+    </main>
+</Layout>

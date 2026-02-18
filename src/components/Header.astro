@@ -103,13 +103,14 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
               if (item.dropdown) {
                 return (
                   <div class="relative group">
-                    <button
+                    <a
+                      href={item.link ? `/ecobuild${item.link}` : "#"}
                       class="text-sm font-medium text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1"
                       data-i18n-key={item.key}
                     >
                       {item.text}
                       <ChevronDown className="w-4 h-4" />
-                    </button>
+                    </a>
                     <div class="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                       {item.dropdown.map((dropdownItem) => (
                         <a
@@ -218,9 +219,12 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
             if (item.dropdown) {
               return (
                 <div class="border-b border-gray-100 last:border-0">
-                  <div class="py-3 px-4 text-lg font-medium text-gray-800">
+                  <a
+                    href={item.link ? `/ecobuild${item.link}` : undefined}
+                    class="py-3 px-4 text-lg font-medium text-gray-800 block hover:text-blue-600 hover:bg-gray-50 transition-all"
+                  >
                     {item.text}
-                  </div>
+                  </a>
                   {item.dropdown.map((dropdownItem) => (
                     <a
                       href={`/ecobuild${dropdownItem.link}`}

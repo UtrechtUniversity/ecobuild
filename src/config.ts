@@ -46,6 +46,7 @@ export const SITE = {
     {
       text: 'Tools',
       key: 'tools',
+      link: '/tools',
       dropdown: [
         { text: 'Ecosystem Services Map', link: '/tool/ecosystem-map', key: 'ecosystem-map' },
         { text: 'Sustainable Buildings Graph Exploration', link: '/tool/graph-explorer', key: 'graph-explorer' }
