@@ -3,6 +3,19 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { ArrowRight, Calendar, ScrollText, Newspaper } from "lucide-react";
+
+import placeholderImg from "../assets/placeholder.png";
+import solar_panel from "../assets/misc/solar-panels.jpg";
+import rooftop_garden from "../assets/misc/rooftop-garden.jpg";
+import rainwater_harvesting from "../assets/misc/rainwater-harvesting-2.jpg";
+import green_walls from "../assets/misc/green-walls.jpg";
+import wind_barriers from "../assets/misc/wind-barriers.jpg";
+import es_graph from "../assets/misc/es-graph.png";
+import te_kura from "../assets/misc/te-kura.jpg";
+import fed_square from "../assets/misc/fed-square.jpg";
+import waste_house from "../assets/misc/waste-house.jpg";
+import bullitt_centre from "../assets/misc/bullit-house.jpg";
+
 import { SITE } from "../config";
 import PartnerCard from "../components/PartnerCard.astro";
 
@@ -16,6 +29,49 @@ const activities = (await getCollection("activities"))
   .slice(0, 3);
 
 const partners = await getCollection("partners");
+
+const caseStudies = [
+  {
+    id: "te-kura",
+    title: "Te Kura Whare",
+    location: "Taneatua, NZ",
+    image: te_kura,
+    summary:
+      "A living building that serves as a community hub and demonstrates indigenous sustainable values.",
+    fullContent:
+      "- Design: Jaxmax\n- A living Building Challenge building\n- Tuhoe are indigenous people of the area and have a special relationship wit hland and water\n- Building collects rain water and filters, stores, treats and discharges 100 % of potable, grey and black water on site\n- Use of water efficient technologies\n- Solar and photovoltaic panels for energy generation (net zero building)\n- Native timber, pine and earthbricks as construction materials\n- Timber piles in the ground provide seismic resistance\n- Food production on-site with native trees, kitchen gardens, orchards, medicinal plants and beehives\n- Cultural meaning of the building represented in the architecture, building principles and purposes",
+  },
+  {
+    id: "fed-square",
+    title: "Federation Square",
+    location: "Melbourne, AU",
+    image: fed_square,
+    summary:
+      "A sustainable urban precinct featuring advanced thermal energy storage and passive cooling systems.",
+    fullContent:
+      "- Design: Lab architecture studio, Bates Smart\n- Building design focuses on delivery of environmental sustainability in water, waste, energy, air, noise and landscaping\n- Sustainable management plan achieved to:\n- Increase amount of recyling by 73 %\n- Save 89 million litres of water\n- Reduce electricity consumption by more than 4.1 million kilowatt\n- Reduce gas consumption by over 12,000 gigajoules\n- Integrates 1.2 km passive cooling system to cool the Atrium, Deakin Edge and some public areas during summer and to supplement heating during winter\n- Double glazing on all external windows, sleep mode for escalators, variable speed drives for A/C pumps and hermetic seal for air conditioning\n- Includes 88 water tanks, rainwater filtration system, waterless urinals and AAA showerheads, sensor lighting, green energy purchase, education program, paper material recycling",
+  },
+  {
+    id: "waste-house",
+    title: "The Waste House",
+    location: "Brighton, UK",
+    image: waste_house,
+    summary:
+      "The UK's first permanent public building made almost entirely from thrown-away materials.",
+    fullContent:
+      "- Design: Duncan Baker-Brown\n- Construction was built by over 360 students from The University of Brighton and City College Brighton & Hove\n- Ongoing live research project, currently used as community hub and for university classes\n- Prototype for constructing a contemporary, low energy, permanent building\n- Using over 85 % 'waste' material drawn from household and construction sites\n- Europe's first permanent public building made almost entirely from waste material\n- A* energy-efficient rated building creating 30 % more energy than it consumes",
+  },
+  {
+    id: "bullitt-centre",
+    title: "Bullitt Centre",
+    location: "Seattle, USA",
+    image: bullitt_centre,
+    summary:
+      "Often called the greenest commercial building in the world, energy and water neutral.",
+    fullContent:
+      "- Design: Miller Hull\n- Multistorey office complex with Living Building certification\n- Grid connected building is a net zero building\n- Location supports non-motorized lifestyle and public transportation\n- Rainwater collection and storage system\n- Large 'canopy' of solar panels on the roof\n- Innovative energy reduction technologies and strategies, e.g.:\n\t- Kinetic energy producing elevator\n\t- 'Irresistible' stairs\n\t- Geothermal heating (PEX tubes)\n\t- Heat pumps",
+  },
+];
 ---
 
 <Layout title="Home">
@@ -195,6 +251,397 @@ const partners = await getCollection("partners");
     </div>
   </section>
 
+  <!-- Design Strategies Section -->
+  <section id="design-strategies" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Design Strategies</h2>
+        <div class="space-y-4 text-gray-600 text-lg">
+          <p>
+            A design strategy for a building is a deliberate intervention or set
+            of interventions implemented to achieve specific functional,
+            environmental, social, or economic objectives. It can include both
+            overarching design approaches and concrete measures such as solar
+            panels, green walls, or water filtration systems when they are
+            intentionally applied to meet defined performance goals.
+          </p>
+          <p>
+            A sustainable design strategy specifically refers to those
+            interventions that generate ecosystem services, aim to reduce
+            environmental impact, enhance resource efficiency, and contribute
+            positively to ecological and social systems across the building’s
+            life cycle.
+          </p>
+          <p>
+            Sustainable design strategies connect overarching objectives with
+            spatial organization, material choices, technical systems, and
+            performance targets.
+          </p>
+          <p>
+            Below you can browse through a few examples of sustainable building
+            design strategies.
+          </p>
+        </div>
+        <div
+          class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5"
+        >
+          <!-- Solar Panels -->
+          <div
+            class="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden"
+          >
+            <div
+              class="aspect-video w-full bg-gray-100 overflow-hidden relative"
+            >
+              <Image
+                src={solar_panel}
+                alt="Solar Panels"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <h4 class="text-lg font-bold text-gray-900 mb-2">Solar Panels</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Solar panels are comprised of smaller units called photovoltaic
+                cells which convert sunlight into electricity.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rooftop Gardens -->
+          <div
+            class="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden"
+          >
+            <div
+              class="aspect-video w-full bg-gray-100 overflow-hidden relative"
+            >
+              <Image
+                src={rooftop_garden}
+                alt="Rooftop Gardens"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <h4 class="text-lg font-bold text-gray-900 mb-2">
+                Rooftop Gardens
+              </h4>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Vegetable or fruit gardens on the flat roof area of a building.
+              </p>
+            </div>
+          </div>
+
+          <!-- Rainwater Harvesting -->
+          <div
+            class="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden"
+          >
+            <div
+              class="aspect-video w-full bg-gray-100 overflow-hidden relative"
+            >
+              <Image
+                src={rainwater_harvesting}
+                alt="Rainwater Harvesting"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <h4 class="text-lg font-bold text-gray-900 mb-2">
+                Rainwater Harvesting
+              </h4>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Collecting rainwater from surfaces and storing it in systems
+                like cisterns for later use.
+              </p>
+            </div>
+          </div>
+
+          <!-- Green Walls -->
+          <div
+            class="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden"
+          >
+            <div
+              class="aspect-video w-full bg-gray-100 overflow-hidden relative"
+            >
+              <Image
+                src={green_walls}
+                alt="Green Walls"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <h4 class="text-lg font-bold text-gray-900 mb-2">Green Walls</h4>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Addition of vegetation, generally climbing plants, to a
+                building's facade.
+              </p>
+            </div>
+          </div>
+
+          <!-- Passive Cooling -->
+          <div
+            class="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group overflow-hidden"
+          >
+            <div
+              class="aspect-video w-full bg-gray-100 overflow-hidden relative"
+            >
+              <Image
+                src={wind_barriers}
+                alt="Wind Barriers"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div class="p-5 flex flex-col flex-grow">
+              <h4 class="text-lg font-bold text-gray-900 mb-2">
+                Wind Barriers
+              </h4>
+              <p class="text-sm text-gray-500 leading-relaxed">
+                Natural or artificial structures, such as trees or walls that
+                protect a specific area from wind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ecosystem Services Section -->
+  <section id="ecosystem-services" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">
+          Ecosystem Services
+        </h2>
+        <div class="space-y-4 text-gray-600 text-lg">
+          <p>
+            Ecosystem services are the benefits that humans and all living
+            organisms derive, either directly or indirectly from the functions
+            of ecosystems (<a
+              href="https://www.mdpi.com/2313-7673/5/2/18"
+              target="_blank"
+              class="text-blue-600 hover:underline">source</a
+            >).
+          </p>
+          <p>
+            ESs are categorized in regulation and maintenance services as well
+            as provisioning services and cultural services. The regulation and
+            maintenance services represent ecological processes such as nutrient
+            cycling and regulation of soil, water and air quality. Provisioning
+            services are the material benefits that are generated by ecological
+            processes (e.g. food, fresh water, and energy), while the cultural
+            services are immaterial benefits that result from the ecosystems
+            (e.g. relaxation and well-being).
+          </p>
+          <p>
+            Buildings have the opportunity to generate ecosystem services
+            through targeted design strategies. By integrating regulation and
+            maintenance services in buildings, provisioning and cultural
+            services can be generated.
+          </p>
+        </div>
+        <div class="mt-12">
+          <Image
+            src={es_graph}
+            alt="Ecosystem Services Graph"
+            class="w-full center h-auto rounded-xl"
+            quality={100}
+          />
+        </div>
+
+        <!-- Examples of Ecosystem Services -->
+        <!-- 
+        <div class="mt-12 grid gap-8 sm:grid-cols-3 lg:grid-cols-5">
+          <div class="text-center group">
+            <div
+              class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-700 mx-auto mb-4 group-hover:rotate-12 transition-transform"
+            >
+              <Activity className="w-8 h-8" />
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">Habitat</h4>
+            <p class="text-sm text-gray-500">
+              Shelter and protection of organisms, access to food/nutrition, and
+              a place for nursery of young organisms.
+            </p>
+          </div>
+          <div class="text-center group">
+            <div
+              class="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 mx-auto mb-4 group-hover:-rotate-12 transition-transform"
+            >
+              <Zap className="w-8 h-8" />
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">Solar Energy</h4>
+            <p class="text-sm text-gray-500">
+              Light and heat emitted by the sun, harnessed and converted into
+              various forms of usable energy like electricity and heating.
+            </p>
+          </div>
+          <div class="text-center group">
+            <div
+              class="w-16 h-16 rounded-full bg-rose-100 flex items-center justify-center text-rose-700 mx-auto mb-4 group-hover:rotate-12 transition-transform"
+            >
+              <Palette className="w-8 h-8" />
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">Aesthetic Experience</h4>
+            <p class="text-sm text-gray-500">
+              Qualities of species or ecosystems that are appreciated for their
+              inherent beauty which inspires designs.
+            </p>
+          </div>
+          <div class="text-center group">
+            <div
+              class="w-16 h-16 rounded-full bg-cyan-100 flex items-center justify-center text-cyan-700 mx-auto mb-4 group-hover:-rotate-12 transition-transform"
+            >
+              <Filter className="w-8 h-8" />
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">Fresh Water</h4>
+            <p class="text-sm text-gray-500">
+              Surface or groundwater which can be purified or directly consumed
+              by humans and non-humans as drinking water.
+            </p>
+          </div>
+          <div class="text-center group">
+            <div
+              class="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center text-red-500 mx-auto mb-4 group-hover:rotate-12 transition-transform"
+            >
+              <ThermometerSun className="w-8 h-8" />
+            </div>
+            <h4 class="font-bold text-gray-900 mb-2">
+              Regulation of Temperature
+            </h4>
+            <p class="text-sm text-gray-500">
+              Cooling or heating of short-term and long-term atmospheric
+              conditions, by the presence of plants, shadowing, ventilation,
+              transpiration, or humidity.
+            </p>
+          </div>
+        </div>  -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Case Studies Section -->
+  <section id="case-studies" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Case Studies</h2>
+        <div class="space-y-4 text-gray-600 text-lg">
+          <p>
+            Building case studies in this research context are documented
+            examples of real buildings or built environments that have
+            implemented specific sustainable or ecosystem-service-oriented
+            design strategies, technologies, or configurations. They serve as
+            empirical evidence of how design strategies perform in practice and
+            how they contribute to ecological, social, and functional outcomes,
+            for example, generating ecosystem services like energy generation,
+            water quality regulation, temperature regulation, or habitat
+            provision.
+          </p>
+          <p>
+            Case studies are used to illustrate and connect design strategies
+            and ecosystem services, helping professionals translate ecological
+            concepts into practice. Case studies can provide measured data and
+            documented performance that can be linked to specific design
+            strategies on an evidence platform to inform future projects and
+            decision-making.
+          </p>
+        </div>
+        <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          {
+            caseStudies.map((study) => (
+              <div
+                class="flex gap-4 p-4 rounded-2xl bg-gray-50 border border-transparent hover:border-gray-200 transition-all group items-start cursor-pointer"
+                onclick={`openCaseStudy('${study.id}')`}
+              >
+                <div class="w-24 h-24 rounded-xl bg-gray-100 shrink-0 overflow-hidden relative flex items-center justify-center">
+                  {typeof study.image === "string" ? (
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      class="w-8 h-8 opacity-20 group-hover:scale-110 transition-transform"
+                    />
+                  ) : (
+                    <Image
+                      src={study.image}
+                      alt={study.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  )}
+                </div>
+                <div class="flex-grow">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <h4 class="font-bold text-gray-900">{study.title}</h4>
+                      <p class="text-xs text-gray-500 mb-1">{study.location}</p>
+                    </div>
+                    <ArrowRight className="w-4 h-4 text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+                  </div>
+                  <p class="text-xs text-gray-600 mb-3 line-clamp-2">
+                    {study.summary}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <!-- Case Study Modal -->
+        <div
+          id="study-modal"
+          class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-all duration-300"
+        >
+          <div
+            id="modal-content"
+            class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-300"
+          >
+            <div class="p-8">
+              <div class="flex justify-between items-start mb-6">
+                <div>
+                  <h3 id="modal-title" class="text-3xl font-bold text-gray-900">
+                  </h3>
+                  <p id="modal-location" class="text-gray-500 mt-1"></p>
+                </div>
+                <button
+                  onclick="closeModal()"
+                  class="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <svg
+                    class="w-6 h-6 text-gray-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <div class="space-y-6">
+                <div id="modal-tags" class="flex gap-3"></div>
+                <p
+                  id="modal-text"
+                  class="text-gray-600 text-lg leading-relaxed whitespace-pre-wrap"
+                >
+                </p>
+              </div>
+
+              <div class="mt-10 pt-6 border-t border-gray-100 flex justify-end">
+                <button
+                  onclick="closeModal()"
+                  class="px-6 py-2.5 bg-gray-900 text-white font-bold rounded-xl hover:bg-blue-600 transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Latest Activities -->
   <!-- <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -311,4 +758,55 @@ const partners = await getCollection("partners");
       </div>
     </div>
   </section>
+
+  <script is:inline define:vars={{ caseStudies }}>
+    const modal = document.getElementById("study-modal");
+    const modalContent = document.getElementById("modal-content");
+    const modalTitle = document.getElementById("modal-title");
+    const modalLocation = document.getElementById("modal-location");
+    const modalText = document.getElementById("modal-text");
+    const modalTags = document.getElementById("modal-tags");
+
+    window.openCaseStudy = (id) => {
+      const study = caseStudies.find((s) => s.id === id);
+      if (!study) return;
+
+      modalTitle.innerText = study.title;
+      modalLocation.innerText = study.location;
+      modalText.innerText = study.fullContent;
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      // Trigger animation
+      setTimeout(() => {
+        modalContent.classList.remove("scale-95", "opacity-0");
+        modalContent.classList.add("scale-100", "opacity-100");
+      }, 10);
+
+      // Disable scroll
+      document.body.style.overflow = "hidden";
+    };
+
+    window.closeModal = () => {
+      modalContent.classList.remove("scale-100", "opacity-100");
+      modalContent.classList.add("scale-95", "opacity-0");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }, 300);
+    };
+
+    // Close on backdrop click
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    // Close on Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  </script>
 </Layout>
