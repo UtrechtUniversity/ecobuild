@@ -1,0 +1,193 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import {
+    Calendar,
+    User,
+    ArrowRight,
+    Users,
+    BookOpen,
+    Lightbulb,
+} from "lucide-react";
+
+const stories = (await getCollection("storytelling")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+const categories = [
+    {
+        title: "User Stories & Case Studies",
+        description:
+            "Real or realistic experiences from people interacting with eco-friendly buildings and urban spaces. These stories help us understand the human side of sustainability and show how design choices affect daily life.",
+        icon: Users,
+        color: "bg-blue-50 text-blue-600",
+    },
+    {
+        title: "Narrative Stories & Personas",
+        description:
+            "Engaging, character-driven stories (like the one with Mara) that explore emotions, challenges, and opportunities in eco-conscious living. These stories connect scientific and design concepts to real human experiences.",
+        icon: BookOpen,
+        color: "bg-green-50 text-green-600",
+    },
+    {
+        title: "Design & Technology Insights",
+        description:
+            "Articles on specific building strategies, from indigenous architectural wisdom to cutting-edge technological innovations. We explain how these approaches work, their benefits, and how they can be applied in real-world projects.",
+        icon: Lightbulb,
+        color: "bg-amber-50 text-amber-600",
+    },
+];
+---
+
+<Layout title="Storytelling Blog">
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-20">
+        <!-- Hero Section -->
+        <div class="max-w-4xl mb-20">
+            <h1
+                class="text-5xl font-extrabold text-gray-900 mb-8 leading-tight"
+            >
+                EcoBUILD Storytelling Blog
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed mb-6">
+                Welcome to the EcoBUILD Storytelling Blog – a multi-layered
+                space where science, design, and human experience come together.
+                Here, we explore how sustainable buildings and urban
+                environments shape our lives, communities, and the ecosystems
+                around us.
+            </p>
+            <div class="h-1 w-20 bg-blue-600 rounded-full"></div>
+        </div>
+
+        <!-- Blog Mix Section -->
+        <div class="mb-24">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12">
+                Our blog is a mix of:
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {
+                    categories.map((cat) => (
+                        <div class="bg-white border border-gray-100 p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                            <div
+                                class={`w-12 h-12 rounded-xl ${cat.color} flex items-center justify-center mb-6`}
+                            >
+                                <cat.icon className="w-6 h-6" />
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">
+                                {cat.title}
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed text-sm">
+                                {cat.description}
+                            </p>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+
+        <!-- Mission & Invitation Section -->
+        <div
+            class="bg-gray-50 rounded-3xl p-8 md:p-12 mb-24 border border-gray-100"
+        >
+            <div class="max-w-3xl">
+                <p class="text-lg text-gray-700 leading-relaxed mb-8">
+                    Through this blog, we aim to create a <b
+                        >rich, accessible dialogue</b
+                    > between researchers, designers, and the broader community. We
+                    want contributions that inspire curiosity, spark ideas, and illustrate
+                    how thoughtful design can improve both human life and the environment.
+                </p>
+                <p class="text-lg font-medium text-gray-900 leading-relaxed">
+                    Whether you’re a researcher, student, designer, or just
+                    curious about sustainable living, the EcoBuild Storytelling
+                    Blog invites you to <b
+                        >explore, learn, and imagine the future</b
+                    >
+                    of buildings and cities with us.
+                </p>
+            </div>
+        </div>
+
+        <!-- Stories Grid -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12">
+                Latest Stories
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                {
+                    stories.map((story) => (
+                        <a
+                            href={`${import.meta.env.BASE_URL}/storytelling/${story.id.replace(/\.[^/.]+$/, "")}`}
+                            class="group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-xl transition-all h-full"
+                        >
+                            {story.data.cover ? (
+                                <div class="h-64 overflow-hidden relative">
+                                    <Image
+                                        src={story.data.cover}
+                                        alt={story.data.title}
+                                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        quality={90}
+                                        format="webp"
+                                        width={800}
+                                    />
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                                </div>
+                            ) : (
+                                <div class="h-64 bg-gradient-to-br from-blue-500/5 to-indigo-500/5 flex items-center justify-center relative overflow-hidden group-hover:from-blue-500/10 group-hover:to-indigo-500/10 transition-colors">
+                                    <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-blue-100 rounded-full blur-3xl opacity-50" />
+                                    <div class="absolute bottom-0 left-0 -ml-8 -mb-8 w-32 h-32 bg-indigo-100 rounded-full blur-3xl opacity-50" />
+                                    <BookOpen className="w-16 h-16 text-blue-200 group-hover:text-blue-300 transition-colors" />
+                                </div>
+                            )}
+                            <div class="p-8 flex flex-col flex-grow">
+                                <div class="flex items-center gap-4 text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
+                                    <span class="flex items-center gap-1.5">
+                                        <Calendar className="w-3.5 h-3.5" />
+                                        {story.data.date.toLocaleDateString(
+                                            "en-US",
+                                            {
+                                                month: "short",
+                                                day: "numeric",
+                                                year: "numeric",
+                                            },
+                                        )}
+                                    </span>
+                                    {story.data.author && (
+                                        <span class="flex items-center gap-1.5 border-l border-gray-200 pl-4">
+                                            <User className="w-3.5 h-3.5" />
+                                            {story.data.author}
+                                        </span>
+                                    )}
+                                </div>
+                                <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors line-clamp-2">
+                                    {story.data.title}
+                                </h3>
+                                {story.data.description && (
+                                    <p class="text-gray-600 leading-relaxed line-clamp-3 mb-6 flex-grow">
+                                        {story.data.description}
+                                    </p>
+                                )}
+                                <div class="mt-auto flex items-center text-sm font-bold text-blue-600">
+                                    Read full story{" "}
+                                    <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-2" />
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+
+                {
+                    stories.length === 0 && (
+                        <div class="col-span-full text-center py-24 bg-gray-50 rounded-3xl border-2 border-dashed border-gray-200">
+                            <BookOpen className="w-16 h-16 text-gray-300 mx-auto mb-6" />
+                            <p class="text-xl text-gray-500 font-medium">
+                                We're preparing our first stories. Check back
+                                soon!
+                            </p>
+                        </div>
+                    )
+                }
+            </div>
+        </div>
+    </div>
+</Layout>

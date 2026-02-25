@@ -1,0 +1,306 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import {
+    Calendar,
+    User,
+    ArrowLeft,
+    Share2,
+    Clock,
+    Mail,
+    Facebook,
+    Linkedin,
+    Twitter,
+    Copy,
+    Check,
+} from "lucide-react";
+
+export async function getStaticPaths() {
+    const stories = await getCollection("storytelling");
+    return stories.map((story) => ({
+        params: { slug: story.id.replace(/\.[^/.]+$/, "") },
+        props: { story },
+    }));
+}
+
+const { story } = Astro.props;
+const { Content } = await render(story);
+
+// Estimate reading time (roughly 200 words per minute)
+const wordCount = story.body?.split(/\s+/).length || 0;
+const readTime = Math.max(1, Math.ceil(wordCount / 200));
+---
+
+<Layout title={story.data.title}>
+    <article class="max-w-4xl mx-auto px-4 py-12 sm:py-24">
+        <!-- Breadcrumbs / Back Link -->
+        <a
+            href={`${import.meta.env.BASE_URL}/storytelling`}
+            class="group inline-flex items-center text-sm font-semibold text-gray-500 hover:text-blue-600 mb-12 transition-colors"
+        >
+            <ArrowLeft
+                className="w-4 h-4 mr-2 transition-transform group-hover:-translate-x-1"
+            />
+            Back to Storytelling
+        </a>
+
+        <!-- Article Header -->
+        <header class="mb-16">
+            <div
+                class="flex items-center gap-6 text-sm font-bold text-blue-600 uppercase tracking-widest mb-6"
+            >
+                <span>Storytelling Blog</span>
+                <span class="w-1 h-1 bg-gray-300 rounded-full"></span>
+                <span class="flex items-center gap-1.5"
+                    ><Clock className="w-4 h-4" /> {readTime} min read</span
+                >
+            </div>
+
+            <h1
+                class="text-4xl sm:text-6xl font-extrabold text-gray-900 mb-8 leading-[1.15]"
+            >
+                {story.data.title}
+            </h1>
+
+            <div
+                class="flex flex-wrap items-center justify-between gap-8 py-8 border-y border-gray-100"
+            >
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600"
+                    >
+                        <User className="w-6 h-6" />
+                    </div>
+                    <div>
+                        <div class="text-gray-900 font-bold">
+                            {story.data.author || "EcoBuild Team"}
+                        </div>
+                        <div
+                            class="text-gray-500 text-sm flex items-center gap-1.5"
+                        >
+                            <Calendar className="w-3.5 h-3.5" />
+                            <time>
+                                {
+                                    story.data.date.toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )
+                                }
+                            </time>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative" id="share-container">
+                    <button
+                        id="share-button"
+                        class="flex items-center gap-2 text-sm font-bold text-gray-700 hover:text-blue-600 transition-colors p-2 rounded-lg hover:bg-gray-50 cursor-pointer"
+                        aria-label="Share story"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                    >
+                        <Share2 className="w-4 h-4" /> Share story
+                    </button>
+
+                    <div
+                        id="share-dropdown"
+                        class="absolute right-0 mt-2 w-56 bg-white border border-gray-100 rounded-2xl shadow-xl py-3 z-50 invisible opacity-0 scale-95 transition-all duration-200"
+                    >
+                        <div
+                            class="px-4 py-2 text-xs font-bold text-gray-400 uppercase tracking-widest border-b border-gray-50 mb-2"
+                        >
+                            Share this story
+                        </div>
+
+                        <a
+                            href="#"
+                            id="share-email"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                            <Mail className="w-4 h-4" /> Email
+                        </a>
+                        <a
+                            href="#"
+                            id="share-facebook"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                            <Facebook className="w-4 h-4" /> Facebook
+                        </a>
+                        <a
+                            href="#"
+                            id="share-linkedin"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                            <Linkedin className="w-4 h-4" /> LinkedIn
+                        </a>
+                        <a
+                            href="#"
+                            id="share-twitter"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                            <Twitter className="w-4 h-4" /> Twitter / X
+                        </a>
+
+                        <div class="border-t border-gray-50 my-2"></div>
+
+                        <button
+                            id="copy-link"
+                            class="w-full flex items-center justify-between px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                        >
+                            <div class="flex items-center gap-3">
+                                <Copy id="copy-icon" className="w-4 h-4" />
+                                <Check
+                                    id="check-icon"
+                                    className="w-4 h-4 hidden text-green-600"
+                                />
+                                <span id="copy-text">Copy link</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Section -->
+        <div class="relative">
+            {
+                story.data.cover && (
+                    <div class="w-full aspect-video rounded-3xl overflow-hidden bg-gray-100 mb-16 shadow-2xl shadow-blue-900/5">
+                        <img
+                            src={story.data.cover.src}
+                            alt={story.data.title}
+                            class="w-full h-full object-cover"
+                        />
+                    </div>
+                )
+            }
+
+            {
+                story.data.description && (
+                    <div class="max-w-3xl mb-16">
+                        <p class="text-2xl text-gray-600 leading-relaxed font-medium italic border-l-8 border-blue-600 pl-8">
+                            {story.data.description}
+                        </p>
+                    </div>
+                )
+            }
+
+            <div
+                class="prose prose-xl prose-blue max-w-none text-gray-800
+                  prose-headings:text-gray-900 prose-headings:font-extrabold
+                  prose-p:leading-extra-relaxed prose-a:text-blue-600 prose-a:no-underline
+                  hover:prose-a:underline
+                  prose-blockquote:border-blue-600 prose-blockquote:bg-blue-50/50
+                  prose-blockquote:py-1 prose-blockquote:px-8 prose-blockquote:rounded-2xl
+                  prose-blockquote:not-italic prose-hr:border-gray-100"
+            >
+                <Content />
+            </div>
+        </div>
+    </article>
+</Layout>
+
+<script is:inline>
+    (function () {
+        const shareButton = document.getElementById("share-button");
+        const shareDropdown = document.getElementById("share-dropdown");
+        const shareContainer = document.getElementById("share-container");
+
+        const emailLink = document.getElementById("share-email");
+        const facebookLink = document.getElementById("share-facebook");
+        const linkedinLink = document.getElementById("share-linkedin");
+        const twitterLink = document.getElementById("share-twitter");
+        const copyBtn = document.getElementById("copy-link");
+
+        const copyIcon = document.getElementById("copy-icon");
+        const checkIcon = document.getElementById("check-icon");
+        const copyText = document.getElementById("copy-text");
+
+        function toggleDropdown(e) {
+            e.stopPropagation();
+            const isOpen = !shareDropdown.classList.contains("invisible");
+
+            if (isOpen) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        }
+
+        function openDropdown() {
+            shareDropdown.classList.remove(
+                "invisible",
+                "opacity-0",
+                "scale-95",
+            );
+            shareDropdown.classList.add("opacity-100", "scale-100");
+            shareButton.setAttribute("aria-expanded", "true");
+        }
+
+        function closeDropdown() {
+            shareDropdown.classList.add("invisible", "opacity-0", "scale-95");
+            shareDropdown.classList.remove("opacity-100", "scale-100");
+            shareButton.setAttribute("aria-expanded", "false");
+        }
+
+        // Initialize links
+        const url = window.location.href;
+        const title = document.title;
+
+        emailLink.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(url)}`;
+        facebookLink.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        linkedinLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+        twitterLink.href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`;
+
+        // Copy Link handling
+        copyBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            navigator.clipboard.writeText(url).then(() => {
+                copyIcon.classList.add("hidden");
+                checkIcon.classList.remove("hidden");
+                copyText.textContent = "Copied!";
+
+                setTimeout(() => {
+                    copyIcon.classList.remove("hidden");
+                    checkIcon.classList.add("hidden");
+                    copyText.textContent = "Copy link";
+                }, 2000);
+            });
+        });
+
+        // Event Listeners
+        shareButton.addEventListener("click", toggleDropdown);
+
+        document.addEventListener("click", (e) => {
+            if (!shareContainer.contains(e.target)) {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeDropdown();
+            }
+        });
+    })();
+</script>
+
+<style>
+    .prose-xl {
+        --tw-prose-body: #374151;
+        --tw-prose-headings: #111827;
+    }
+    .leading-extra-relaxed {
+        line-height: 1.85;
+    }
+</style>

@@ -162,6 +162,18 @@ const partners = defineCollection({
   }),
 });
 
+const storytelling = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/storytelling" }),
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    date: z.date(),
+    author: z.string().optional(),
+    cover: image().optional(),
+    description: z.string().optional(),
+    featured: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   publications,
   books,
@@ -173,4 +185,5 @@ export const collections = {
   presentations,
   activities,
   partners,
+  storytelling,
 };

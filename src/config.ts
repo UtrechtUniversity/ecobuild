@@ -50,7 +50,9 @@ export const SITE = {
         { text: 'Ecosystem Services Map', link: '/tool/ecosystem-map', key: 'ecosystem-map' },
         { text: 'Sustainable Buildings Graph Exploration', link: '/tool/graph-explorer', key: 'graph-explorer' }
       ]
-    }
+    },
+    { text: 'Storytelling', link: '/storytelling', key: 'storytelling' },
+
   ],
 
   // i18n Config
