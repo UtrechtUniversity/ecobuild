@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import TeamCard from "../components/TeamCard.astro";
 import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import mycelium from "../assets/misc/mycelium.png";
 
 const allMembers = await getCollection("team");
 
@@ -123,8 +125,59 @@ const groupedMembers = groups.reduce(
         Our Team
       </h1>
       <p class="text-lg text-gray-600" data-i18n-key="team.subtitle">
-        Meet the researchers and students behind our innovations.
+        Meet the people behind our innovations.
       </p>
+    </div>
+
+    <!-- Collaboration & Co-creation Section -->
+    <div class="mb-20">
+      <div
+        class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 shadow-sm"
+      >
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">
+              Collaboration & Co-creation
+            </h2>
+            <div class="space-y-4 text-gray-600 text-lg leading-relaxed">
+              <p>
+                We believe that tackling the complex challenges of
+                sustainability requires a collective effort. We actively
+                collaborate and co-create with our partners, researchers, and
+                local communities to develop evidence-based solutions that
+                foster regenerative environments. By bridging diverse expertise,
+                we ensure our research translates into real, meaningful impact.
+              </p>
+            </div>
+            <div class="mt-8 pt-6 border-t border-gray-200">
+              <p class="text-xs text-gray-500 italic">
+                Graph provided by the Transdisciplinary Competencies team:
+                <br />
+                Jonas Torrens, Copernicus Institute, Utrecht University;<br />
+                Anke de Vrieze, Centre for Unusual Collaborations; <br />
+                Vanessa Timmer, Pathways to Sustainability, Utrecht University; <br
+                />
+                Corinne Lamain, Formerly: Centre for Unusual Collaborations
+              </p>
+            </div>
+          </div>
+          <div class="relative group">
+            <div
+              class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"
+            >
+            </div>
+            <div
+              class="relative bg-white rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image
+                src={mycelium}
+                alt="Mycelium Network - Symbol of Collaboration"
+                class="w-full h-auto object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="space-y-20">
