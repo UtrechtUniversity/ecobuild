@@ -1,0 +1,38 @@
+---
+title: "Your News Title Here"
+date: 2025-01-01
+visible: false
+
+# One or two sentence summary shown in the timeline list.
+summary: "Short summary shown in the timeline. Keep it to one or two sentences."
+
+# Optional: link to an external blog post or publication.
+# When set, the title and thumbnail become clickable and "Read more" appears.
+# url: "https://example.com/blog-post"
+
+# Optional: one or more images shown as a carousel on the detail page.
+# Paths are relative to this file (../../assets/news/your-image.jpg).
+# images:
+#   - ../../assets/news/your-image.jpg
+#   - ../../assets/news/your-second-image.jpg
+
+# Optional: related links shown at the bottom of the detail page.
+# The URL is hidden — only the title is displayed.
+# links:
+#   - title: "Related Publication"
+#     url: "https://example.com/paper"
+#   - title: "Tool or Dataset"
+#     url: "https://example.com/tool"
+---
+
+Write the full news body here in Markdown. This text is shown on the detail page.
+
+You can use **bold**, _italic_, bullet lists, and headings:
+
+## Section heading
+
+A paragraph of body text goes here.
+
+- Bullet point one
+- Bullet point two
+- Bullet point three
