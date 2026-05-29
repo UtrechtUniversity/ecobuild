@@ -89,10 +89,17 @@ const team = defineCollection({
 
 const news = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/news" }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     date: z.date(),
+    visible: z.boolean().default(true),
     summary: z.string().optional(),
+    url: z.string().optional(),
+    images: z.array(image()).optional(),
+    links: z.array(z.object({
+      title: z.string(),
+      url: z.string(),
+    })).optional(),
   }),
 });
 

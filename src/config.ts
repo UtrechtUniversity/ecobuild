@@ -35,6 +35,7 @@ export const SITE = {
     { text: 'About', link: '/about', key: 'about' },
     { text: 'Publications', link: '/publications', key: 'publications' },
     //{ text: 'Success Stories', link: '/success-stories', key: 'success-stories' },
+    { text: 'News', link: '/news', key: 'news' },
     { text: 'Team', link: '/team', key: 'team' },
     //{ text: 'Activities', link: '/activities', key: 'activities' },
     { text: 'Contact Us', link: '/contact', key: 'contact' },
