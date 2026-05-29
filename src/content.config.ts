@@ -95,6 +95,7 @@ const news = defineCollection({
     visible: z.boolean().default(true),
     summary: z.string().optional(),
     url: z.string().optional(),
+    urlTitle: z.string().optional(),
     images: z.array(image()).optional(),
     links: z.array(z.object({
       title: z.string(),
