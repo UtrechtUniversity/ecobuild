@@ -1,6 +1,6 @@
 ---
 name: "Daria Sosnowska"
-role: "Student"
+role: "Student Assistant"
 title: ["Honors student", "Ecocrawler researcher"]
 avatar: "../../assets/DariaSosnowska.jpg"
 email: "d.w.sosnowska@uu.nl"
