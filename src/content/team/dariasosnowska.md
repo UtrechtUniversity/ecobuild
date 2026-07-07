@@ -1,7 +1,7 @@
 name: "Daria Sosnowska"
 role: "Student"
 title: ["Honors student", "Ecocrawler researcher"]
-avatar: ""
+avatar: "../../assets/DariaSosnowska.jpg"
 email: "d.w.sosnowska@uu.nl"
 linkedin: "https://www.linkedin.com/in/daria-sosnowska-73a061288?originalSubdomain=nl"
 weight: 1
