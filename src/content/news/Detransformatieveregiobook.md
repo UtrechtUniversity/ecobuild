@@ -6,5 +6,5 @@ summary: "The new book 'De Transformatieve Regio' features EcoBUILD as a pioneer
 url: "https://www.espconference.org/europe2026/home"
 urlTitle: "De Transformatieve Regio book"
 images:
-  - ../../assets/news/DeTransformatieveRegio.jpg
+  - ../../assets/DeTransformatieveRegio.jpg
 ---
