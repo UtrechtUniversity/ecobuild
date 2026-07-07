@@ -111,15 +111,20 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
                       <ChevronDown className="w-4 h-4" />
                     </button>
                     <div class="absolute top-full right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                      {item.dropdown.map((dropdownItem) => (
-                        <a
-                          href={`/ecobuild${dropdownItem.link}`}
-                          class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors first:rounded-t-lg last:rounded-b-lg"
-                          data-i18n-key={dropdownItem.key}
-                        >
-                          {dropdownItem.text}
-                        </a>
-                      ))}
+                      {item.dropdown.map((dropdownItem) => {
+                        const isExternal = dropdownItem.link.startsWith("http");
+                        return (
+                          <a
+                            href={isExternal ? dropdownItem.link : `/ecobuild${dropdownItem.link}`}
+                            target={isExternal ? "_blank" : undefined}
+                            rel={isExternal ? "noopener noreferrer" : undefined}
+                            class="block px-4 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors first:rounded-t-lg last:rounded-b-lg"
+                            data-i18n-key={dropdownItem.key}
+                          >
+                            {dropdownItem.text}
+                          </a>
+                        );
+                      })}
                     </div>
                   </div>
                 );
@@ -221,17 +226,22 @@ const getIcon = (key: string) => iconMap[key] || Sparkles;
                   <div class="py-3 px-4 text-lg font-medium text-gray-800">
                     {item.text}
                   </div>
-                  {item.dropdown.map((dropdownItem) => (
-                    <a
-                      href={`/ecobuild${dropdownItem.link}`}
-                      class="flex items-center justify-between w-full py-3 px-8 text-base text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all"
-                      data-i18n-key={dropdownItem.key}
-                      onclick="window.closeMobileMenu()"
-                    >
-                      <span>{dropdownItem.text}</span>
-                      <ChevronDown className="w-4 h-4 -rotate-90 text-gray-400" />
-                    </a>
-                  ))}
+                  {item.dropdown.map((dropdownItem) => {
+                    const isExternal = dropdownItem.link.startsWith("http");
+                    return (
+                      <a
+                        href={isExternal ? dropdownItem.link : `/ecobuild${dropdownItem.link}`}
+                        target={isExternal ? "_blank" : undefined}
+                        rel={isExternal ? "noopener noreferrer" : undefined}
+                        class="flex items-center justify-between w-full py-3 px-8 text-base text-gray-700 hover:text-blue-600 hover:bg-blue-50 transition-all"
+                        data-i18n-key={dropdownItem.key}
+                        onclick="window.closeMobileMenu()"
+                      >
+                        <span>{dropdownItem.text}</span>
+                        <ChevronDown className="w-4 h-4 -rotate-90 text-gray-400" />
+                      </a>
+                    );
+                  })}
                 </div>
               );
             }
