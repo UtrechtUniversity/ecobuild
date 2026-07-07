@@ -25,6 +25,7 @@ const {
   role,
   title,
   avatar,
+  bio,
   email,
   website,
   linkedin,
@@ -46,7 +47,7 @@ const roleToKey = {
 };
 ---
 
-<Layout title={name}>
+<Layout title={name} description={bio}>
   <div class="max-w-4xl mx-auto px-4 py-12 sm:py-20">
     <a
       href={`${import.meta.env.BASE_URL}/team`}
