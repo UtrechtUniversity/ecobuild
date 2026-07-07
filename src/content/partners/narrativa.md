@@ -1,5 +1,5 @@
 ---
-name: "Narrativa"
+name: "NarrativA"
 description: "Ecologische architectuur met een verhaal!"
 logo: "../../assets/narrativa.png"
 website: "https://narrativa.nl"
