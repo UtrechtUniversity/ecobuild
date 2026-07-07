@@ -49,7 +49,8 @@ export const SITE = {
       key: 'tools',
       dropdown: [
         { text: 'Ecosystem Services Map', link: '/tool/ecosystem-map', key: 'ecosystem-map' },
-        { text: 'Sustainable Buildings Graph Exploration', link: '/tool/graph-explorer', key: 'graph-explorer' }
+        { text: 'Sustainable Buildings Graph Exploration', link: '/tool/graph-explorer', key: 'graph-explorer' },
+        { text: 'Dream Building Recommender', link: 'https://hpvig.science.uu.nl', key: 'dbr-generator' }
       ]
     },
     { text: 'Storytelling', link: '/storytelling', key: 'storytelling' },
