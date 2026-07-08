@@ -6,5 +6,5 @@ summary: "The five-month software project carried out by a group of ten Bachelor
 url: "https://utrechtuniversity.github.io/ecobuildhttps://hpvig.science.uu.nl"
 urlTitle: "Dream Building Recommender"
 images:
-  - ../../assets/Image.jpg
+  - ../../assets/softwareproject_team.jpg
 ---

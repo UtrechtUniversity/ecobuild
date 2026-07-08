@@ -2,7 +2,7 @@
 name: "Software project team"
 role: "Undergraduate"
 title: ["Bachelor students", "'Dream Building Recommender' developer" , "'Admin interface' developer"]
-avatar: "../../assets/Image.jpg"
+avatar: "../../assets/softwareproject_team.jpg"
 email: "k.hecht@uu.nl"
 weight: 1
 ---
