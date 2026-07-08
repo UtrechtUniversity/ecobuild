@@ -2,7 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import bibtexParse from 'bibtex-parse-js';
+import { parse as parseBibtex } from '@retorquere/bibtex-parser';
 import slugify from 'slugify';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,23 +21,19 @@ if (!fs.existsSync(BOOKS_DIR)) {
 }
 
 // Helper to clean BibTeX strings (remove braces)
+// literallist fields (publisher, institution, organization, ...) come back as arrays
 function cleanString(str) {
   if (!str) return '';
+  if (Array.isArray(str)) str = str.join(' and ');
   return str.replace(/[{}]/g, '').trim();
 }
 
-// Helper to parse authors
-function parseAuthors(authorStr) {
-  if (!authorStr) return [];
-  return authorStr.split(' and ').map(name => {
-    const cleanName = cleanString(name);
-    // Handle "Last, First" format
-    if (cleanName.includes(',')) {
-      const parts = cleanName.split(',').map(p => p.trim());
-      return `${parts[1]} ${parts[0]}`;
-    }
-    return cleanName;
-  });
+// Helper to parse authors (bibtex-parser returns author as an array of creator objects)
+function parseAuthors(authors) {
+  if (!authors) return [];
+  return authors.map(({ firstName, prefix, lastName, name }) =>
+    cleanString(name || [firstName, prefix, lastName].filter(Boolean).join(' '))
+  );
 }
 
 // Main function
@@ -49,21 +45,26 @@ function importBibtex() {
   }
 
   const bibContent = fs.readFileSync(BIB_FILE, 'utf-8');
-  const parsed = bibtexParse.toJSON(bibContent);
+  const { entries: parsed, errors } = parseBibtex(bibContent, { sentenceCase: false });
+
+  if (errors.length > 0) {
+    console.warn(`Encountered ${errors.length} parse error(s):`);
+    errors.forEach(err => console.warn(`  ${err.error}`));
+  }
 
   console.log(`Found ${parsed.length} entries. Processing...`);
 
   let count = 0;
   parsed.forEach(entry => {
-    const tags = entry.entryTags;
+    const tags = entry.fields;
 
     // Basic validation
     if (!tags.title || !tags.year) {
-      console.warn(`Skipping entry ${entry.citationKey}: Missing title or year.`);
+      console.warn(`Skipping entry ${entry.key}: Missing title or year.`);
       return;
     }
 
-    const entryType = (entry.entryType || '').toLowerCase();
+    const entryType = (entry.type || '').toLowerCase();
     const isBook = entryType === 'book';
     const OUTPUT_DIR = isBook ? BOOKS_DIR : PUBLICATIONS_DIR;
 
