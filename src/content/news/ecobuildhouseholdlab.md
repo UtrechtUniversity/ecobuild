@@ -1,5 +1,5 @@
 ---
-title: "EcoBUILD presentation"
+title: "EcoBUILD collaborates with the Household Living Lab"
 date: 2025-07-02
 visible: true
 summary: "The EcoBUILD project became a part of the Household living lab on Utrecht Science Park where the platform will be tested"
