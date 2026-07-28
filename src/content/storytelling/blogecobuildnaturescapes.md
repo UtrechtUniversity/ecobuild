@@ -5,8 +5,8 @@ author: "Katharina Hecht"
 description: "How buildings can become ecological actors in the urban naturescape - showing the links of EcoBUILD to the NATURESCAPES project."
 featured: true
 images:
-  - ../../assets/news/KUMUmap.jpg
-  - ../../assets/news/VGS_SG_collage.jpg
+  - ../../assets/news/KUMUmap.png
+  - ../../assets/news/VGS_SG_collage.png
 ---
 
 When buildings become Naturescapes: How EcoBUILD can help bridge ecological knowledge and urban design
