@@ -1,5 +1,5 @@
 ---
-title: "But where are the numbers? — Building the evidence bridge for ecological design"
+title: "But where are the numbers? Building the evidence bridge for ecological design"
 date: 2026-07-01
 author: "Katharina Hecht"
 description: "Buildings are already being designed with nature in mind. But without a shared knowledge infrastructure connecting design decisions to ecological outcomes, ambition and reality keep drifting apart."
