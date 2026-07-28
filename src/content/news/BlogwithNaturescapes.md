@@ -6,5 +6,5 @@ summary: "We got the chance to write a blog for NATURESCAPES, an amazing EU proj
 url: "https://medium.com/@naturescapes30/when-buildings-become-naturescapes-how-ecobuild-can-help-bridge-ecological-knowledge-and-urban-f6c3695774fe"
 urlTitle: "Naturescapes - Blog on EcoBUILD"
 images:
-  - ../../assets/news/BlogNaturscapes.jpg
+  - ../../assets/news/VGS_SG_collage.png
 ---
