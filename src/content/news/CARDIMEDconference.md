@@ -6,5 +6,5 @@ summary: "EcoBUILD facilitated a project collaboration with Abraham Ortega Rebos
 url: "https://www.cardimed-project.eu/blog/events/cardimed-conference-2026-bringing-urban-rivers-back-to-life/"
 urlTitle: "CARDIMED - conference"
 images:
-  - ../../assets/news/esp_conference_2026.jpg
+  - ../../assets/news/CARDIMEDconference.jpg
 ---
