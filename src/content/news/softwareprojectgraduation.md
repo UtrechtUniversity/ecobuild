@@ -1,6 +1,6 @@
 ---
 title: "Software project graduation"
-date: 2025-06-24
+date: 2026-06-24
 visible: true
 summary: "The five-month software project carried out by a group of ten Bachelor graduates came to a successful end and resulted in a working 'Dream Building Recommender' interface. "
 url: "https://utrechtuniversity.github.io/ecobuildhttps://hpvig.science.uu.nl"
