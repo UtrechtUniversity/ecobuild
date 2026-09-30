@@ -6,5 +6,5 @@ summary: "EcoBUILD and the elephanttiles were showcased at the Lustrumfestival o
 url: "https://www.uu.nl/en/organisation/lustrum-2026-connect-create-change/programme/lustrum-festival"
 urlTitle: "Lustrumfestival-UU"
 images:
-  - ../../assets/news/CARDIMEDconference.jpg
+  - ../../assets/news/Lustrum2026.jpg
 ---
