@@ -6,5 +6,5 @@ summary: "We were invited to showcase our EcoBUILD project at the Bio Inspired I
 url: "https://www.uu.nl/en/masters/bio-inspired-innovation"
 urlTitle: "Bio Inspired Innovation"
 images:
-  - ../../assets/news/....jpg
+  - ../../assets/news/BIIalumnievent.jpg
 ---
