@@ -1,6 +1,6 @@
 ---
 title: "New blog with NATURESCAPES"
-date: 2025-07-15
+date: 2026-07-15
 visible: true
 summary: "We got the chance to write a blog for NATURESCAPES, an amazing EU project on the integration of nature-based solutions in urban environments."
 url: "https://medium.com/@naturescapes30/when-buildings-become-naturescapes-how-ecobuild-can-help-bridge-ecological-knowledge-and-urban-f6c3695774fe"
