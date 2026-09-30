@@ -6,5 +6,5 @@ summary: "TEcoBUILD and the elephanttiles were showcased at the Lustrumfestival 
 url: "https://www.uu.nl/en/organisation/lustrum-2026-connect-create-change/programme/lustrum-festival"
 urlTitle: "Lustrumfestival-UU"
 images:
-  - ../../assets/news/esp_conference_2026.jpg
+  - ../../assets/news/CARDIMEDconference.jpg
 ---
