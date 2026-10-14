@@ -5,8 +5,8 @@ author: "Katharina Hecht"
 description: "Reflections from the ‘Bringing Urban Rivers Back to Life’ conference."
 featured: true
 images:
-  - ../../assets/publications/CARDIMEDconference.png
-  - ../../assets/publications/VGS_SG_collage.png
+  - ../../assets/publications/CARDIMED_Kspeaks.jpeg
+  - ../../assets/publications/CARDIMED_rivers.jpg
 ---
 
 **‘Rivers are alive’, vibrated through the CARDIMED conference in Utrecht last week. But what if they were not, would they matter less? Some reflections on value, the commons, and why buildings, too, can be thought of as living systems.**
@@ -22,6 +22,9 @@ And the statement works and makes sense. Rivers are a part of and not apart from
 
 *And yet, sitting in the sessions, one question kept returning to me.*
 
+![CARDIMED conference discussion on stage](../../assets/news/CARDIMED_Kspeaks.jpg)
+
+*Figure 1. Stage discussion at the CARDIMED conference in September in Utrecht.*
 
 ### Do we only value what is alive?
 
@@ -33,10 +36,14 @@ The question is not only philosophical. Ecosystems do not run on living organism
 
 ### Ours, or everyone’s?
 
-A second question followed closely: do we mainly care when we consider something ours? And do we care less when it belongs to the collective?
+*A second question followed closely: do we mainly care when we consider something ours? And do we care less when it belongs to the collective?*
 
 The attraction of ‘their river’ at the conference was that people felt ownership in the sense of belonging and attachment. Yet rivers, groundwater, air and urban climate are shared. They are commons, and commons are often treated as if they belong to no one. They are considered something to use, drain into or build over, while responsibility for their condition lies somewhere else. Often, we take more from the commons than what we give back, if we give something back.
 Elinor Ostrom’s work showed that this is not inevitable: communities can and do govern shared resources well when they see themselves as responsible for them. Perhaps what we need is to redefine what ‘ours’ means. Collective things and common goods are ours, but not only to use. They are ours to care for, and ours to provide for, too.
+
+![CARDIMED conference river artwork](../../assets/news/CARDIMED_rivers.jpg)
+
+*Figure 2. Artwork representing a living river. Created by participants of the CARDIMED conference and designed by an artist.*
 
 
 ### Everything moves, just at different speeds
