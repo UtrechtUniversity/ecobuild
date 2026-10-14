@@ -9,6 +9,8 @@ images:
   - ../../assets/publications/CARDIMED_rivers.jpg
 ---
 
+## Reflections from the ‘Bringing Urban Rivers Back to Life’ conference
+
 **‘Rivers are alive’, vibrated through the CARDIMED conference in Utrecht last week. But what if they were not, would they matter less? Some reflections on value, the commons, and why buildings, too, can be thought of as living systems.**
 
 
