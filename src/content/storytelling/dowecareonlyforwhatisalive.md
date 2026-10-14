@@ -22,7 +22,7 @@ And the statement works and makes sense. Rivers are a part of and not apart from
 
 *And yet, sitting in the sessions, one question kept returning to me.*
 
-![CARDIMED conference discussion on stage](../../assets/news/CARDIMED_Kspeaks.jpg)
+![CARDIMED conference discussion on stage](../../assets/news/CARDIMED_Kspeaks.jpeg)
 
 *Figure 1. Stage discussion at the CARDIMED conference in September in Utrecht.*
 
@@ -76,4 +76,4 @@ Maybe the most important question from the conference was not whether rivers are
 **Hecht, K. Towards ecologically functional buildings: weaving ecosystem services into building development processes (PhD thesis, Utrecht University).** *https://research-portal.uu.nl/en/publications/towards-ecologically-functional-buildings-weaving-ecosystem-servi/*
 **EcoBUILD platform demo:** *https://www.youtube.com/watch?v=NdFSIIp4SNI*
 
-Author: Dr Katharina Hecht I am an environmental scientist and ecologist working at the interface of ecology, urban design, and sustainability science. My research focuses on ecosystem services, regenerative design, and how ecological knowledge can inform sustainable buildings and cities.
+**Author: Dr Katharina Hecht** *I am an environmental scientist and ecologist working at the interface of ecology, urban design, and sustainability science. My research focuses on ecosystem services, regenerative design, and how ecological knowledge can inform sustainable buildings and cities.*
