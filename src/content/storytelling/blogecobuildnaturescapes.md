@@ -97,7 +97,7 @@ It may be whether we are ready to design cities where nature is part of every bu
 *https://www.sciencedirect.com/science/article/pii/S0360132324011508*
 *https://www.uu.nl/publicatie/groene-gevels-houden-gebouwen-koeler-en-krikken-biodiversiteit-op*
 
-![KHecht_profile](../../assets/news/KHECHT_profileiamges.png)
+![KHecht_profile](../../assets/news/KHecht_profileiamges.png)
 
 **Author: Dr Katharina Hecht**
 *I am an environmental scientist and ecologist working at the interface of ecology, urban design, and sustainability science. My research focuses on ecosystem services, regenerative design, and how ecological knowledge can inform sustainable buildings and cities.*
