@@ -18,7 +18,7 @@ images:
 
 Last week, on 22nd  and 23rd of September 2026, researchers, practitioners, planners, policy makers and artists gathered at a beautiful location surrounded by a canal in Utrecht for the CARDIMED conference ‘Bringing Urban Rivers Back to Life’, organised together with Utrecht University’s Pathways to Sustainability programme. The conversations moved between daylighting buried streams, renaturing canalised riverbeds, governance and the idea of a shared manifesto for the rights to urban rivers.
 
-*Running through all of it was a statement: rivers are alive.*
+*Running through all of it was a statement: rivers are alive. Source: CARDIMED, 2026*
 
 And the statement works and makes sense. Rivers are a part of and not apart from our human lives and they move, flow and shape landscapes, societies, economies and politics. It draws in not only scientists, who start reasoning about why and in what sense a river might be alive, but also the people who walk along a river every day, swim or fish in it, cross it on the way to work. People who speak of it as their river. Calling a river alive turns it from background into someone or something you can have a relationship with.
 
@@ -26,7 +26,7 @@ And the statement works and makes sense. Rivers are a part of and not apart from
 
 ![CARDIMED conference discussion on stage](../../assets/news/CARDIMED_Kspeaks.jpeg)
 
-*Figure 1. Stage discussion at the CARDIMED conference in September in Utrecht.*
+*Figure 1. Stage discussion at the CARDIMED conference in September in Utrecht. Source: CARDIMED, 2026*
 
 ### Do we only value what is alive?
 
