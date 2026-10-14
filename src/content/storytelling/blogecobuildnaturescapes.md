@@ -7,13 +7,19 @@ featured: true
 images:
   - ../../assets/news/KUMUmap.png
   - ../../assets/news/VGS_SG_collage.png
+  - ../../assets/news/KHecht_profileiamges.png
 ---
 
-## Heading When buildings become Naturescapes: How EcoBUILD can help bridge ecological knowledge and urban design
+### When buildings become Naturescapes: How EcoBUILD can help bridge ecological knowledge and urban design
 
-***Original blogstory published on NATURESCAPES: https://medium.com/@naturescapes30/when-buildings-become-naturescapes-how-ecobuild-can-help-bridge-ecological-knowledge-and-urban-f6c3695774fe***
+**Original blogstory published on NATURESCAPES: https://medium.com/@naturescapes30/when-buildings-become-naturescapes-how-ecobuild-can-help-bridge-ecological-knowledge-and-urban-f6c3695774fe**
 
 Green roofs, living walls, rain gardens, and urban wetlands are becoming more familiar features in planning documents and climate strategies. Yet one persistent question remains: *how do we move from isolated interventions to landscapes where buildings, ecosystems, and communities work together?*
+
+
+![Kumu map](../../assets/news/KUMUmap.png)
+
+*Figure 1. Screenshot of the initial 'strategies for designing urban ecosystem services' diagram from which EcoBUILD derived.*
 
 Cities are often imagined as the opposite of nature. Buildings, infrastructure, and paved surfaces are seen as spaces where ecological processes have been replaced by engineered systems. Yet urban ecologists have long argued that cities are complex socio-ecological systems, where human and non-human life constantly interact.
 
@@ -31,7 +37,7 @@ Many numbers are lacking still because they have never been measured. Some infor
 To implement targeted designs effectively, we also need better ways of linking ecological knowledge with the everyday decisions made by architects, planners, and developers.
 
 
-### Heading From scattered knowledge to design intelligence
+### From scattered knowledge to design intelligence
 
 One of the biggest barriers to integrating ecology into urban design is knowledge fragmentation.
 
@@ -42,16 +48,21 @@ EcoBUILD, a research initiative at Utrecht University funded as signature projec
 The idea is simple yet powerful: creating a structured knowledge base linking existing sustainable design strategies, including green roofs, green walls, solar panels, or water retention or filtration systems, to their measurable environmental and social benefits.
 
 Instead of asking whether a green roof is “good,” planners and designers could explore more nuanced questions:
-· How much cooling does it provide in dense urban areas?
-· What biodiversity benefits does it generate?
-· How does it interact with other nature-based solutions nearby?
-· Under what conditions does it perform best?
+*· How much cooling does it provide in dense urban areas?*
+*· What biodiversity benefits does it generate?*
+*· How does it interact with other nature-based solutions nearby?*
+*· Under what conditions does it perform best?*
 
 By organizing scientific evidence into accessible datasets and decision tools, EcoBUILD aims to make ecological knowledge actionable in design processes.
 In other words, it seeks to translate ecological complexity into something that can inform real planning decisions.
 
 
-### Heading Connecting buildings to the landscape perspective
+![Short description of the photo](../../assets/news/VGS_SG_collage.png)
+
+*Figure 2. Examples of buildings in Singapore that integrate ecosystem services generating strategies using mechanical and nature-based design.*
+
+
+### Connecting buildings to the landscape perspective
 
 This is where EcoBUILD intersects strongly with the concept of naturescapes.
 The NATURESCAPES project is investigating how NbS operate across functional urban areas, examining their combined impacts on climate, biodiversity, and communities.
@@ -59,26 +70,24 @@ The NATURESCAPES project is investigating how NbS operate across functional urba
 But for these landscape-scale transformations to happen, ecological thinking also needs to reach the building scale, where many decisions about urban form are actually made.
 
 Buildings are the most common elements of our cities. If designed differently, they could collectively form a dense network of ecological infrastructures: pollinator corridors across rooftops, water-retaining courtyards that reduce flood risk, or vegetated façades that moderate urban heat.
+
 Seen this way, buildings are not just part of cities but they are building blocks of future naturescapes.
 
-EcoBUILD therefore asks a complementary question to the NATURESCAPES project: How can ecological knowledge be embedded directly into building design decisions so that urban landscapes evolve in more regenerative ways?
-Towards regenerative urban design
+EcoBUILD therefore asks a complementary question to the NATURESCAPES project: *How can ecological knowledge be embedded directly into building design decisions so that urban landscapes evolve in more regenerative ways?
+Towards regenerative urban design*
+
+### Towards regenerative urban design 
 
 The shift toward regenerative cities requires more than adding greenery to buildings. It requires rethinking how architecture, infrastructure, and ecosystems interact across scales.
 
 Data, design tools, and open knowledge platforms cannot solve this challenge alone. But they can help researchers, planners, and designers navigate complexity and experiment with new possibilities.
 
 By connecting ecological science with the everyday practices of urban design, initiatives like EcoBUILD can support the broader goal that the NATURESCAPES project explores: creating landscapes where nature-based solutions work together to produce climate resilience, biodiversity, and social wellbeing.
+
 In the end, the question may not be whether cities can coexist with nature.
+
 It may be whether we are ready to design cities where nature is part of every building and where every building is part of living naturescapes.
 
-![Figure 1. Screenshot of the initial ‘strategies for designing urban ecosystem services’ diagram from which EcoBUILD derived](path/to/image.jpg)
-
-Nature-based solutions (NbS) are increasingly shaping the way we imagine sustainable cities. While NbS are often discussed for parks, rivers, and urban forests, buildings themselves are still rarely treated as ecological actors.
-
-Buildings as part of urban ecosystems
-
-![Figure 2. Examples of buildings in Singapore that integrate ecosystem services generating strategies using mechanical and nature-based design (path/to/image.jpg)
 
 ### Heading If you’re interested in learning more, check out these links:
 
@@ -87,7 +96,9 @@ Buildings as part of urban ecosystems
 *https://website-c6762e67.mof.fxh.temporary.site/nbs-guide/*
 *https://www.sciencedirect.com/science/article/pii/S0360132324011508*
 *https://www.uu.nl/publicatie/groene-gevels-houden-gebouwen-koeler-en-krikken-biodiversiteit-op*
- 
-**Author: Dr Katharina Hecht** 
+
+![KHecht_profile](../../assets/news/KHECT_profileiamges.png)
+
+**Author: Dr Katharina Hecht**
 *I am an environmental scientist and ecologist working at the interface of ecology, urban design, and sustainability science. My research focuses on ecosystem services, regenerative design, and how ecological knowledge can inform sustainable buildings and cities.*
 
