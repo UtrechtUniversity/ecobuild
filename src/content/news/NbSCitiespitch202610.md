@@ -6,5 +6,5 @@ summary: "We were invited to pitch EcoBUILD at the NbS in Cities event to add bu
 url: "https://www.uu.nl/en/events/the-unusual-suspects-missing-and-marginalized-actors-in-nature-based-solutions"
 urlTitle: "NbS in cities event"
 images:
-  - ../../assets/IMG_3856.HEIC
+  - ../../assets/news/NbSinCities1.jpg
 ---
