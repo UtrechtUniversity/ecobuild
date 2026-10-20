@@ -5,10 +5,10 @@ author: "Katharina Hecht"
 description: "A small paperback from 1986 explained how to turn city backyards into ecologically functional places."
 featured: true
 images:
-  - ../../assets/Umweltwerkbuch1986 (1).jpeg
-  - ../../assets/Umweltwerkbuch1986 (2).jpeg
-  - ../../assets/Umweltwerkbuch1986 (3).jpeg
-  - ../../assets/Umweltwerkbuch1986 (4).jpeg
+  - ../../assets/news/Umweltwerkbuch1986_1.jpeg
+  - ../../assets/news/Umweltwerkbuch1986_2.jpeg
+  - ../../assets/news/Umweltwerkbuch1986_3.jpeg
+  - ../../assets/news/Umweltwerkbuch1986_4.jpeg
 ---
 
 ## We already knew how: what I discovered in a 1986 workbook
@@ -23,7 +23,7 @@ I picked one up almost without thinking: the ‘Environmental-working book’ (U
 The further I read, the less it felt like a charming relic. It felt like an accusation, a gentle one, addressed to all of us.
 
 
-![Coverpage](../../assets/Umweltwerkbuch1986 (1).jpeg)
+![Coverpage](../../assets/Umweltwerkbuch1986_1.jpeg)
 
 *Figure 1. Coverpage of the Umweltwerkbuch from 1986.*
 
@@ -41,7 +41,7 @@ Here is the uncomfortable part. We could republish that chapter tomorrow, almost
 When I ask myself why, I find at least three answers. Some people simply don't know that these strategies exist. Others know, but don't know how to begin. And many know and could begin, but lack the time, the energy or the desire to do it.
 The first two answers are about information, and those are the gaps EcoBUILD works on. The third one is harder. It is not about knowledge at all. It is about what we are willing to give our time to, and what we are rewarded for giving it to.
 
-![Umweltwerkbuch1983_4](../../assets/Umweltwerkbuch1986 (4).jpeg)
+![Umweltwerkbuch1983_2](../../assets/Umweltwerkbuch1986_2.jpeg)
 
 *Figure 2. Harvesting in the urban garden plot: a step-by-step guide from the Umweltwerkbuch, 1986.*
 
@@ -84,14 +84,14 @@ What I take from it is a design question. Instead of treating maintenance as a f
 *A living building is not one that needs no one. It is one that is worth someone's care.*
 
 
-![Umweltwerkbuch1983_2](../../assets/Umweltwerkbuch1986 (2).jpeg)
+![Umweltwerkbuch1983_3](../../assets/Umweltwerkbuch1986_3.jpeg)
 
 *Figure 3. 'The greenhouse by the window' from the Umweltwerkbuch, 1986.*
 
 I took the book home from that table at the Nebelhöhle. Someone had cared enough to pass it on instead of throwing it away, trusting that a stranger might do something with it. Maybe that is where it starts: with small, unrewarded acts of passing things on. Writing this post is my way of putting the book back on the table.
 If you have a backyard, a balcony or a flat roof, the knowledge you need was already printed in 1986. The question is whether we are ready to make time for it. Grassroot initiatives are helpful, but they generally need structural support to really change the system and keep flourishing. 
 
-![Umweltwerkbuch1983_3](../../assets/Umweltwerkbuch1986 (3).jpeg)
+![Umweltwerkbuch1983_4](../../assets/Umweltwerkbuch1986_4.jpeg)
 
 *Figure 4. 'Stratifying cuttings using a box' from the Umweltwerkbuch, 1986.*
 
