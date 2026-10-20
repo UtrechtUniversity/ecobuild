@@ -14,13 +14,13 @@ images:
 **‘Rivers are alive’, vibrated through the CARDIMED conference in Utrecht last week. But what if they were not, would they matter less? Some reflections on value, the commons, and why buildings, too, can be thought of as living systems.**
 
 
-### ‘Rivers are alive’ and why that statement works
+### ‘Rivers are alive’
 
 Last week, on 22nd  and 23rd of September 2026, researchers, practitioners, planners, policy makers and artists gathered at a beautiful location surrounded by a canal in Utrecht for the CARDIMED conference ‘Bringing Urban Rivers Back to Life’, organised together with Utrecht University’s Pathways to Sustainability programme. The conversations moved between daylighting buried streams, renaturing canalised riverbeds, governance and the idea of a shared manifesto for the rights to urban rivers.
 
-*Running through all of it was a statement: rivers are alive. Source: CARDIMED, 2026*
+*Running through all of it I felt a statement was made: rivers are alive.*
 
-And the statement works and makes sense. Rivers are a part of and not apart from our human lives and they move, flow and shape landscapes, societies, economies and politics. It draws in not only scientists, who start reasoning about why and in what sense a river might be alive, but also the people who walk along a river every day, swim or fish in it, cross it on the way to work. People who speak of it as their river. Calling a river alive turns it from background into someone or something you can have a relationship with.
+And the statement makes sense. Rivers are a part of and not apart from our human lives and they move, flow and shape landscapes, societies, economies and politics. It draws in not only scientists, who start reasoning about why and in what sense a river might be alive, but also the people who walk along a river every day, swim or fish in it, cross it on the way to work. People who speak of it as their river. Calling a river alive turns it from background into someone or something you can have a relationship with.
 
 *And yet, sitting in the sessions, one question kept returning to me.*
 
@@ -32,7 +32,7 @@ And the statement works and makes sense. Rivers are a part of and not apart from
 
 If we need a river to be alive in order to care for it, what does that say about everything we consider not alive? Do we value what is alive more than what we see as inanimate? Water, sediment, stone, air, soil minerals. If they are not alive, are they less valuable? Should they be respected less, simply because they do not seem to fight back?
 
-On closer look, rivers do respond. They flood, they dry out, they erode banks and carry away what we put into them. They simply respond on timescales and in ways that we often do not read as a response; until the water is in the street.
+On a closer look, rivers do respond. They flood, they dry out, they erode banks and carry away what we put into them. They simply respond on timescales and in ways that we often do not read as a response, until a flooding appears and streets and houses are inundated.
 The question is not only philosophical. Ecosystems do not run on living organisms alone. In ecology, the structure of an ecosystem is the arrangement of both its biotic and abiotic elements. To those belong plants, animals and microbes, but equally water, minerals, light and the physical space in which they interact. The ecosystem services we depend on, from water purification to cooling and flood regulation, emerge from exactly these interactions. Take the ‘non-living’ half away and the living half has nothing to live in.
 
 
@@ -59,7 +59,7 @@ Why not think of buildings as living systems too?
 
 This is where the river conversation links to EcoBUILD. If language shapes decisions, then the way we talk about buildings matters as well. We usually describe them as static, inert objects: a structure, an envelope, an asset. But a building is also an open system, constantly exchanging heat, water, air, materials and information with the city and landscape around it.
 
-In a paper with Jaco Appelman and Maibritt Pedersen Zari, we argued that metaphors like ‘living buildings’, or buildings as ‘living systems’, can help move building practice towards regeneration. Design strategies which generate ecosystem services are what allow buildings to begin functioning like living systems. In a later article in Land, we proposed that buildings can become habitats hosting living, non-living and hybrid systems, and derived design strategies from how ecosystems work: providing space for ecologies, increasing multifunctionality, designing dynamic and open structures that exchange with their surroundings, and building symbiotic interactions between living and technical systems. With Marcus Fricke and colleagues, we also showed how ecosystem services are lost across a building’s whole lifecycle, and how much unfulfilled potential common green roofs and façades still have.
+In a paper with Appelman and Pedersen Zari, we argued that metaphors like ‘living buildings’, or buildings as ‘living systems’, can help move building practice towards regeneration. Design strategies which generate ecosystem services are what allow buildings to begin functioning like living systems. In a later article in Land, we proposed that buildings can become habitats hosting living, non-living and hybrid systems, and derived design strategies from how ecosystems work: providing space for ecologies, increasing multifunctionality, designing dynamic and open structures that exchange with their surroundings, and building symbiotic interactions between living and technical systems. With Marcus Fricke and colleagues, we also showed how ecosystem services are lost across a building’s whole lifecycle, and how much unfulfilled potential common green roofs and façades still have.
 
 This thinking runs through my PhD thesis on weaving ecosystem services into building development processes. And it links buildings directly to rivers. In every roof sits a water catchment system. Furthermore, rainwater that runs off a sealed roof into a sewer, heat radiating from a façade, pollutants washed from a courtyard, all of it ends up in the river system. A building that retains, filters and slowly releases water, cools its surroundings and provides habitat is part of bringing a river back to life, even if it stands kilometres away from the bank.
 
@@ -72,10 +72,15 @@ Maybe the most important question from the conference was not whether rivers are
 ### If you’re interested in learning more
 
 **CARDIMED conference ‘Bringing Urban Rivers Back to Life’:** *https://mission-adaptation-portal.ec.europa.eu/news-events/events-0/cardimed-conference-2026-bringing-urban-rivers-back-life-2026-09-22_en*
+
 **Hecht, K., Appelman, J., & Pedersen Zari, M. (2023). Buildings as Living Systems – Towards a Tangible Framework for Ecosystem Services Design. In Design for Climate Adaptation (UIA 2023), Springer.** *https://doi.org/10.1007/978-3-031-36320-7_19* 
+
 **Hecht, K., Ortega Reboso, A., van der Vegt, M., Appelman, J., & Pedersen Zari, M. (2024). Ecologically Regenerative Building Systems through Exergy Efficiency: Designing for Structural Order and Ecosystem Services. Land, 13(9), 1375.** *https://doi.org/10.3390/land13091375*
+
 **Fricke, M. M., Hecht, K., Vollmer, M., & Lang, W. (2024). Ecosystem Services Guiding Built Environment Design – Understanding the Impacts of Building Practice on Ecosystems and Their Fundamental Contribution to Human Wellbeing. In Design for Climate Adaptation (UIA 2023), Springer.** *https://doi.org/10.1007/978-3-031-36320-7_24*
+
 **Hecht, K. Towards ecologically functional buildings: weaving ecosystem services into building development processes (PhD thesis, Utrecht University).** *https://research-portal.uu.nl/en/publications/towards-ecologically-functional-buildings-weaving-ecosystem-servi/*
+
 **EcoBUILD platform demo:** *https://www.youtube.com/watch?v=NdFSIIp4SNI*
 
 **Author: Dr Katharina Hecht** *I am an environmental scientist and ecologist working at the interface of ecology, urban design, and sustainability science. My research focuses on ecosystem services, regenerative design, and how ecological knowledge can inform sustainable buildings and cities.*
