@@ -2,7 +2,7 @@
 name: "Renske Blok"
 role: "Student Assistant"
 title: ["Master student", 'Research assistant']
-avatar: "../../assets/news/RenskeBlok.png"
+avatar: "../../assets/news/RenskeBlok1.png"
 email: "r.j.blok@students.uu.nl"
 linkedin: "https://www.linkedin.com/in/renske-blok-390489192/"
 weight: 1
